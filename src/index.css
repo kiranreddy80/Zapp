@@ -1,0 +1,315 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------
+   Design tokens
+   ------------------------------------------------------------------ */
+:root {
+  --brand: 18 183 106;
+  --brand-deep: 3 152 85;
+  --volt: 191 247 0;
+  --ink: 6 18 12;
+  --nav-h: 84px;
+}
+
+/* ------------------------------------------------------------------
+   Base
+   ------------------------------------------------------------------ */
+@layer base {
+  * {
+    @apply border-neutral-200;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    /* `clip` rather than `hidden`: scroll-reveal animations translate elements
+       on the X axis before they enter the viewport, which would otherwise
+       widen the document on narrow screens. `hidden` on <body> does not
+       actually clip (the value propagates to the viewport and leaves <body>
+       visible), and `overflow: hidden` on an ancestor would break the
+       `position: sticky` sidebars used on the FAQ, contact and legal pages.
+       `overflow-x: clip` clips without creating a scroll container. */
+    overflow-x: clip;
+  }
+
+  body {
+    @apply bg-white text-ink-900 font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    @apply font-display font-bold tracking-tight;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: rgb(var(--brand));
+    color: #fff;
+  }
+
+  /* Scrollbar — subtle, brand-tinted */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f4f6f5;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5d0;
+    border-radius: 99px;
+    border: 2px solid #f4f6f5;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--brand));
+  }
+
+  /* Anchor targets clear the fixed navbar. Applied to every element carrying
+     an id — not just :target — so programmatic scrollIntoView (used for
+     cross-page hash links like /about#life) lands in the right place too. */
+  [id] {
+    scroll-margin-top: calc(var(--nav-h) + 24px);
+  }
+}
+
+/* ------------------------------------------------------------------
+   Components
+   ------------------------------------------------------------------ */
+@layer components {
+  /* Frosted panel used on dark imagery */
+  .glass {
+    @apply bg-white/10 backdrop-blur-xl border border-white/15;
+  }
+  .glass-light {
+    @apply bg-white/70 backdrop-blur-xl border border-white/60;
+  }
+
+  /* Eyebrow label above section headings */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-3.5 py-1.5
+           text-[11px] font-semibold uppercase tracking-[.14em] text-brand-700;
+  }
+  .eyebrow-dark {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5
+           text-[11px] font-semibold uppercase tracking-[.14em] text-volt-400;
+  }
+
+  /* Gradient display text */
+  .text-gradient {
+    @apply bg-gradient-to-br from-brand-400 via-brand-500 to-brand-700 bg-clip-text text-transparent;
+  }
+  .text-gradient-volt {
+    @apply bg-gradient-to-r from-volt-400 via-brand-300 to-brand-400 bg-clip-text text-transparent;
+  }
+
+  /* Card that lifts on hover */
+  .card {
+    @apply rounded-3xl border border-neutral-200/80 bg-white shadow-card transition-all duration-500;
+  }
+  .card-hover {
+    @apply hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-lift;
+  }
+
+  .card-dark {
+    @apply rounded-3xl border border-white/10 bg-white/[.04] backdrop-blur-sm transition-all duration-500;
+  }
+  .card-dark-hover {
+    @apply hover:-translate-y-1.5 hover:border-brand-400/40 hover:bg-white/[.07];
+  }
+
+  /*
+   * Editorial drop cap, in Space Mono italic and brand green.
+   *
+   * Uses ::first-letter rather than splitting the string in JS, so the
+   * paragraph stays a single text node — screen readers and copy-paste are
+   * unaffected. The size is tuned against the paragraph's line-height so the
+   * float clears after exactly two lines; a taller glyph box leaves a ragged
+   * three-line step. Add `.dropcap-dark` alongside it on dark surfaces.
+   */
+  .dropcap::first-letter {
+    @apply float-left mr-3 font-caps font-bold italic text-brand-500;
+    font-size: 3.4rem;
+    line-height: 0.9;
+  }
+
+  .dropcap-dark::first-letter {
+    @apply text-volt-400;
+  }
+
+  /* Link with an underline that draws in */
+  .link-underline {
+    @apply relative inline-flex items-center gap-1.5;
+  }
+  .link-underline::after {
+    content: '';
+    @apply absolute -bottom-0.5 left-0 h-px w-0 bg-current transition-all duration-300;
+  }
+  .link-underline:hover::after {
+    @apply w-full;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Utilities
+   ------------------------------------------------------------------ */
+@layer utilities {
+  /* Fade the edges of a horizontally scrolling strip */
+  .mask-x {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  }
+  .mask-b {
+    -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent);
+    mask-image: linear-gradient(to bottom, #000 60%, transparent);
+  }
+
+  /* Film-grain overlay for dark hero sections */
+  .noise::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.22;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .pause-on-hover:hover * {
+    animation-play-state: paused;
+  }
+
+  /* Perspective helpers for tilt cards */
+  .perspective {
+    perspective: 1200px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Keyframes not expressible in the Tailwind config
+   ------------------------------------------------------------------ */
+/* Torn-paper bottom edge for the receipt cards in the savings calculator.
+   A repeating conic-gradient mask cuts triangles out of the lower border. */
+.receipt-tear {
+  --tear: 15px;
+  -webkit-mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% /
+    var(--tear) 100% repeat-x;
+  mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% /
+    var(--tear) 100% repeat-x;
+}
+
+/* Faux barcode, drawn with a repeating gradient rather than an image. */
+.barcode {
+  background-image: repeating-linear-gradient(
+    to right,
+    currentColor 0 2px,
+    transparent 2px 4px,
+    currentColor 4px 5px,
+    transparent 5px 9px,
+    currentColor 9px 12px,
+    transparent 12px 14px
+  );
+}
+
+/* Orbit ring. The ring turns and each node counter-turns at the same rate, so
+   the nodes travel around the core while their labels stay upright. */
+@keyframes orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes orbit-spin-rev {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.orbit-spin {
+  animation: orbit-spin 90s linear infinite;
+}
+.orbit-spin-rev {
+  animation: orbit-spin-rev 90s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-spin,
+  .orbit-spin-rev {
+    animation: none;
+  }
+}
+
+@keyframes gradient-pan {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-pan {
+  background-size: 220% 220%;
+  animation: gradient-pan 9s ease infinite;
+}
+
+@keyframes ken-burns {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.14) translate3d(-1.5%, -1.5%, 0);
+  }
+}
+
+.animate-ken-burns {
+  animation: ken-burns 22s ease-out forwards;
+}
+
+/* Route-level loading bar */
+@keyframes indeterminate {
+  0% {
+    transform: translateX(-100%) scaleX(0.3);
+  }
+  50% {
+    transform: translateX(0%) scaleX(0.6);
+  }
+  100% {
+    transform: translateX(100%) scaleX(0.3);
+  }
+}
+
+/* ------------------------------------------------------------------
+   Reduced motion — collapse every decorative animation
+   ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
