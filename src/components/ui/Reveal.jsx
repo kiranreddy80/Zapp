@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import cn from '@/lib/cn'
 
@@ -7,6 +8,47 @@ const OFFSETS = {
   left: { x: 44, y: 0 },
   right: { x: -44, y: 0 },
   none: { x: 0, y: 0 },
+}
+
+/*
+ * The container caps at 1320px with 32px of padding, so content sits 32px from
+ * its edge. Only once the viewport exceeds the container does outer margin
+ * appear to absorb a 44px slide plus a few px of bleed from rotated icons:
+ * 1400px leaves 40px of margin, which clears it. Anything narrower — including
+ * 1280px laptops, where the container fills the screen — reveals vertically.
+ */
+const WIDE = '(min-width: 1400px)'
+
+/**
+ * Whether a horizontal entrance is safe at this viewport width.
+ *
+ * A `left` reveal parks its content 44px to the right until it scrolls into
+ * view. On a phone the gutter is far narrower than that, so anything already
+ * flush with the container edge is pushed past the viewport — and because every
+ * not-yet-revealed section holds that offset, the document stays wider than the
+ * screen and the whole page scrolls sideways. Below `sm` the slide is barely
+ * perceptible anyway, so horizontal entrances fall back to a vertical one.
+ */
+function useWideEnoughForSlide() {
+  const [wide, setWide] = useState(() => window.matchMedia?.(WIDE).matches ?? true)
+
+  useEffect(() => {
+    const mq = window.matchMedia(WIDE)
+    const onChange = (e) => setWide(e.matches)
+    mq.addEventListener('change', onChange)
+    setWide(mq.matches)
+    return () => mq.removeEventListener('change', onChange)
+  }, [])
+
+  return wide
+}
+
+/** Resolves a direction to an offset, swapping sideways travel for vertical
+ *  travel when the viewport is too narrow to absorb it. */
+function useOffset(from) {
+  const wide = useWideEnoughForSlide()
+  const base = OFFSETS[from] ?? OFFSETS.up
+  return wide || !base.x ? base : OFFSETS.up
 }
 
 /**
@@ -26,7 +68,7 @@ export default function Reveal({
 }) {
   const reduced = useReducedMotion()
   const Cmp = motion[as] ?? motion.div
-  const offset = OFFSETS[from] ?? OFFSETS.up
+  const offset = useOffset(from)
 
   if (reduced) {
     const Plain = as
@@ -76,9 +118,9 @@ export function RevealGroup({ children, className, stagger = 0.09, delay = 0, am
 
 export function RevealItem({ children, className, from = 'up', ...rest }) {
   const reduced = useReducedMotion()
+  const offset = useOffset(from)
   if (reduced) return <div className={className}>{children}</div>
 
-  const offset = OFFSETS[from] ?? OFFSETS.up
   return (
     <motion.div
       className={className}
