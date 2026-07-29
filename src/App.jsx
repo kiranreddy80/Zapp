@@ -1,5 +1,6 @@
 import { Suspense, lazy } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import Layout from '@/components/layout/Layout'
 
 /**
@@ -36,16 +37,46 @@ const NotFound = lazy(() => import('@/pages/NotFound'))
 /** Route-level loading state — a brand-tinted shell, not a bare spinner. */
 function RouteFallback() {
   return (
-    <div className="grid min-h-[70vh] place-items-center bg-ink-900">
-      <div className="flex flex-col items-center gap-5">
-        <span className="relative grid h-14 w-14 place-items-center">
-          <span className="absolute inset-0 animate-pulse-ring rounded-full bg-brand-500/40" />
-          <span className="relative grid h-14 w-14 place-items-center rounded-2xl bg-brand-500">
-            <svg viewBox="0 0 24 24" className="h-6 w-6" fill="white" aria-hidden="true">
-              <path d="M13.5 2 4 13.2h6.1L9.6 22 20 10.6h-6.4L13.5 2Z" />
-            </svg>
-          </span>
-        </span>
+    <div
+      className="grid min-h-[70vh] place-items-center bg-ink-900"
+      role="status"
+      aria-live="polite"
+    >
+      <div className="flex flex-col items-center gap-6">
+        <div className="relative flex items-center">
+          {/* cell */}
+          <div className="relative h-16 w-28 overflow-hidden rounded-xl border-2 border-white/25 p-1.5">
+            <motion.div
+              className="current-flow relative h-full overflow-hidden rounded-md bg-gradient-to-r from-brand-500 to-volt-500"
+              initial={{ width: '10%' }}
+              animate={{ width: '100%' }}
+              transition={{
+                duration: 1.6,
+                ease: 'easeInOut',
+                repeat: Infinity,
+                repeatType: 'reverse',
+              }}
+            />
+          </div>
+          {/* terminal */}
+          <span className="ml-1 h-6 w-2 rounded-r bg-white/25" />
+
+          {/* Bolt sitting over the cell. White with a dark outline so it stays
+              legible over both the unfilled (dark) and filled (bright green)
+              parts of the battery as the level animates past it. */}
+          <svg
+            viewBox="0 0 24 24"
+            className="absolute left-1/2 top-1/2 h-8 w-8 -translate-x-1/2 -translate-y-1/2"
+            fill="#fff"
+            stroke="#06120C"
+            strokeWidth="1.4"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M13.5 2 4 13.2h6.1L9.6 22 20 10.6h-6.4L13.5 2Z" />
+          </svg>
+        </div>
+
         <p className="text-sm tracking-wide text-white/60">Charging up…</p>
       </div>
     </div>

@@ -1,47 +1,65 @@
 import { Link } from 'react-router-dom'
 import cn from '@/lib/cn'
+import { LOGO_SRC, SITE } from '@/data/site'
 
 /**
- * Wordmark. The bolt is drawn inline so it inherits currentColor and needs no
- * network request — important for the first paint in the fixed header.
+ * ZappGo logo: a circular badge carrying a bolt over a scooter, followed by the
+ * wordmark with "Zapp" in brand green and "Go" in the surface's ink colour.
+ *
+ * The mark is drawn inline rather than loaded as a file — it costs no network
+ * request, stays crisp at any size, and can recolour itself for light and dark
+ * headers. If a real brand asset is supplied, set `LOGO_SRC` in data/site.js to
+ * its path and it is used instead, with no other change needed.
  */
+function Mark({ className }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} aria-hidden="true">
+      {/* badge */}
+      <circle cx="24" cy="24" r="22.5" fill="#06120C" />
+      <circle cx="24" cy="24" r="22.5" fill="none" stroke="#12B76A" strokeWidth="3" />
+
+      {/* inner glow ring */}
+      <circle cx="24" cy="24" r="18" fill="none" stroke="#12B76A" strokeWidth="1" opacity=".35" />
+
+      {/* bolt */}
+      <path
+        d="M27 9 15.5 26.5h7.2L21 39 33.5 21.5h-7.7L27 9Z"
+        fill="#BFF700"
+        stroke="#06120C"
+        strokeWidth="1.4"
+        strokeLinejoin="round"
+      />
+
+      {/* scooter silhouette along the base */}
+      <g fill="#12B76A">
+        <circle cx="16" cy="36.5" r="3.1" />
+        <circle cx="32" cy="36.5" r="3.1" />
+        <path d="M13.5 34.2h5.2l3.6-4.1h6.6l2.4 4.1h2.4v1.9h-3.6l-1.9-3.2h-4.9l-3.4 3.9h-6.4v-2.6Z" />
+      </g>
+    </svg>
+  )
+}
+
 export default function Logo({ className, light = false, to = '/' }) {
   return (
     <Link
       to={to}
-      aria-label="Zapp Electric — home"
+      aria-label={`${SITE.name} — home`}
       className={cn('group inline-flex items-center gap-2.5', className)}
     >
-      <span className="relative grid h-10 w-10 place-items-center overflow-hidden rounded-xl bg-brand-500 shadow-glow transition-transform duration-500 group-hover:scale-105">
-        <span className="absolute inset-0 bg-gradient-to-br from-volt-400/70 via-transparent to-brand-700/60" />
-        <svg viewBox="0 0 24 24" className="relative h-5 w-5" fill="none" aria-hidden="true">
-          <path
-            d="M13.5 2 4 13.2h6.1L9.6 22 20 10.6h-6.4L13.5 2Z"
-            fill="white"
-            stroke="white"
-            strokeWidth="1.2"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </span>
+      {LOGO_SRC ? (
+        <img
+          src={LOGO_SRC}
+          alt=""
+          className="h-11 w-11 shrink-0 object-contain transition-transform duration-500 group-hover:scale-105"
+        />
+      ) : (
+        <Mark className="h-11 w-11 shrink-0 transition-transform duration-500 group-hover:scale-105" />
+      )}
 
-      <span className="flex flex-col leading-none">
-        <span
-          className={cn(
-            'font-display text-[1.35rem] font-extrabold tracking-tight',
-            light ? 'text-white' : 'text-ink-900',
-          )}
-        >
-          zapp
-        </span>
-        <span
-          className={cn(
-            'mt-0.5 text-[9.5px] font-semibold uppercase tracking-[.28em]',
-            light ? 'text-white/65' : 'text-neutral-500',
-          )}
-        >
-          Electric
-        </span>
+      <span className="font-display text-[1.4rem] font-extrabold uppercase leading-none tracking-tight">
+        <span className="text-brand-500">Zapp</span>
+        <span className={light ? 'text-white' : 'text-ink-900'}>Go</span>
       </span>
     </Link>
   )

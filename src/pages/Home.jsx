@@ -10,6 +10,7 @@ import ImpactSection from '@/components/home/ImpactSection'
 import Testimonials from '@/components/home/Testimonials'
 import BackedBy from '@/components/home/BackedBy'
 import FaqSection from '@/components/home/FaqSection'
+import SectionNav from '@/components/home/SectionNav'
 import GetInTouch from '@/components/sections/GetInTouch'
 import { IMG } from '@/data/media'
 
@@ -24,8 +25,8 @@ export default function Home() {
       />
 
       <MissionBanner />
-      <Hero />
       <PartnerMarquee />
+      <Hero />
       <MissionVision />
       <OurJourney />
       <SavingsCalculator />
@@ -33,8 +34,9 @@ export default function Home() {
       <ImpactSection />
       <Testimonials />
       <BackedBy />
-      <FaqSection tone="muted" />
+      <FaqSection id="faq" tone="muted" scene />
       <GetInTouch />
+      <SectionNav />
     </>
   )
 }

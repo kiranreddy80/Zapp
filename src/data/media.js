@@ -39,6 +39,31 @@ export const VIDEO = {
   forestPoster: photo(2739664, 1600),
 }
 
+/**
+ * Auto-advancing slides behind the homepage mission banner.
+ *
+ * Chosen by rendering each candidate behind the banner's green wash first —
+ * several otherwise-good shots went muddy under the tint, and one carried a
+ * visible KTM sign. Ordered fleet → street → service bay → rider.
+ */
+export const BANNER_SLIDES = [
+  {
+    src: '/media/banner-fleet.jpg',
+    fallback: photo(28670971, 1920),
+    alt: 'A row of Zapp electric scooters lined up',
+  },
+  {
+    src: '/media/banner-charging.jpg',
+    fallback: photo(17626459, 1920),
+    alt: 'A Zapp electric scooter charging at an EV point',
+  },
+  {
+    src: '/media/banner-car.jpg',
+    fallback: photo(17626460, 1920),
+    alt: 'A Zapp electric vehicle',
+  },
+]
+
 export const IMG = {
   // ---- Riders & delivery -------------------------------------------------
   riderScooter: photo(4393247),

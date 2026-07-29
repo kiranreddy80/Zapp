@@ -5,6 +5,7 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import Icon from '@/components/ui/Icon'
 import { HeroThemeProvider } from '@/context/HeroTheme'
+import PageLoader from './PageLoader'
 
 /** Thin brand-coloured reading-progress bar pinned under the navbar. */
 function ScrollProgress() {
@@ -14,7 +15,9 @@ function ScrollProgress() {
   return (
     <motion.div
       style={{ scaleX }}
-      className="fixed inset-x-0 top-0 z-[55] h-[3px] origin-left bg-gradient-to-r from-brand-500 via-volt-500 to-brand-400"
+      // `current-flow` sweeps a highlight along the filled portion, so the bar
+      // reads as charge moving through a cable rather than a plain meter.
+      className="current-flow fixed inset-x-0 top-0 z-[55] h-[3px] origin-left overflow-hidden bg-gradient-to-r from-brand-500 via-volt-500 to-brand-400"
     />
   )
 }
@@ -78,6 +81,8 @@ export default function Layout() {
 
   return (
     <HeroThemeProvider>
+      <PageLoader />
+
       <div className="flex min-h-screen flex-col">
         <ScrollToTop />
         <ScrollProgress />

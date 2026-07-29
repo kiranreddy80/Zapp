@@ -13,3 +13,7 @@ dist-ssr
 
 # Local-only editor/agent settings
 .claude/settings.local.json
+
+# Original full-size art. The optimised .jpg versions in public/media are what
+# the site ships; keeping the multi-MB PNGs out of git avoids bloating clones.
+public/media/*.png

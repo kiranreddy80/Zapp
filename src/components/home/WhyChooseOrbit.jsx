@@ -169,7 +169,9 @@ export default function WhyChooseOrbit() {
 
         {/* ---- the core ---- */}
         <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          <div className="relative grid h-[15rem] w-[15rem] place-items-center rounded-full border border-brand-200 bg-white px-8 text-center shadow-lift">
+          {/* `current-ring` puts a slowly rotating conic gradient behind the
+              core, so the hub reads as energised rather than a static disc. */}
+          <div className="current-ring relative grid h-[15rem] w-[15rem] place-items-center rounded-full border border-brand-200 bg-white px-8 text-center shadow-lift">
             <span
               aria-hidden="true"
               className="absolute inset-0 animate-pulse-ring rounded-full bg-brand-500/15"

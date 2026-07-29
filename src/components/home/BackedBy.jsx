@@ -12,7 +12,7 @@ import { INVESTORS } from '@/data/content'
  */
 export default function BackedBy() {
   return (
-    <section id="investors" className="border-y border-neutral-200 bg-[#F7F9F8] py-16 sm:py-20">
+    <section id="investors" className="border-y border-neutral-200 bg-[#F1FAF4] py-16 sm:py-20">
       <Reveal from="none">
         <div className="container">
           <p className="text-center text-[11px] font-semibold uppercase tracking-[.2em] text-neutral-500">

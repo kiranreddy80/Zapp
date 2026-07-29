@@ -7,178 +7,203 @@ import Img from '@/components/ui/Img'
 import { TESTIMONIALS } from '@/data/content'
 import cn from '@/lib/cn'
 
-const AUTOPLAY_MS = 7000
+const AUTOPLAY_MS = 2000
+const EASE = [0.22, 1, 0.36, 1]
+
+/*
+ * Hand-placed rather than evenly spaced on a circle: six avatars at exact 60°
+ * intervals look like a clock face. Varying the radius and diameter a little
+ * gives the cluster the scattered feel of the reference. Values are percentages
+ * of the (square) stage, and each entry is the avatar's centre.
+ */
+const SEATS = [
+  { x: 50, y: 9, size: 17 },
+  { x: 84, y: 23, size: 14 },
+  { x: 90, y: 58, size: 16.5 },
+  { x: 70, y: 88, size: 14.5 },
+  { x: 30, y: 90, size: 15.5 },
+  { x: 11, y: 44, size: 17 },
+]
 
 export default function Testimonials() {
   const [i, setI] = useState(0)
-  const [dir, setDir] = useState(1)
   const [paused, setPaused] = useState(false)
   const reduced = useReducedMotion()
   const t = TESTIMONIALS[i]
+  const [firstName, ...lastName] = t.name.split(' ')
 
-  const go = (next) => {
-    const target = (next + TESTIMONIALS.length) % TESTIMONIALS.length
-    // Slide forward when stepping to the next item (including the wrap from
-    // last back to first), backwards otherwise.
-    const forward = target === (i + 1) % TESTIMONIALS.length
-    setDir(forward ? 1 : -1)
-    setI(target)
-  }
-
-  // Advance on a timer so the section is not inert for a passive reader.
-  // Any hover or manual interaction pauses it, and it never runs under
-  // reduced-motion.
+  // Advance on a timer so the section is not inert for a passive reader. Any
+  // hover or manual pick pauses it, and it never runs under reduced motion.
   const timer = useRef(null)
   useEffect(() => {
     if (paused || reduced) return
-    timer.current = setTimeout(() => {
-      setDir(1)
-      setI((c) => (c + 1) % TESTIMONIALS.length)
-    }, AUTOPLAY_MS)
+    timer.current = setTimeout(() => setI((c) => (c + 1) % TESTIMONIALS.length), AUTOPLAY_MS)
     return () => clearTimeout(timer.current)
   }, [i, paused, reduced])
 
-  const select = (next) => {
-    setPaused(true)
-    go(next)
-  }
-
   return (
     <Section
-      tone="muted"
+      id="stories"
+      tone="mint"
       className="overflow-hidden"
       onPointerEnter={() => setPaused(true)}
       onPointerLeave={() => setPaused(false)}
     >
-      <div className="grid gap-12 lg:grid-cols-[.9fr_1.1fr] lg:items-center lg:gap-16">
-        <div>
-          <SectionHeading
-            align="left"
-            eyebrow="Rider stories"
-            title="Real riders. Real numbers."
-            lead="We asked riders what changed after they switched. These are their words, with the figures they shared."
-          />
+      <SectionHeading
+        align="left"
+        eyebrow="Rider stories"
+        title="Real riders. Real numbers."
+        lead="Pick a face. We asked each of them what changed after they switched, and these are their words with the figures they shared."
+      />
 
-          <Reveal delay={0.15}>
-            <div className="mt-9 flex items-center gap-3">
-              <button
-                type="button"
-                onClick={() => select(i - 1)}
-                aria-label="Previous story"
-                className="grid h-12 w-12 place-items-center rounded-full border border-neutral-300 bg-white text-ink-900 transition-all duration-300 hover:-translate-x-0.5 hover:border-brand-400 hover:text-brand-700"
-              >
-                <Icon name="ArrowLeft" className="h-5 w-5" />
-              </button>
-              <button
-                type="button"
-                onClick={() => select(i + 1)}
-                aria-label="Next story"
-                className="grid h-12 w-12 place-items-center rounded-full border border-neutral-300 bg-white text-ink-900 transition-all duration-300 hover:translate-x-0.5 hover:border-brand-400 hover:text-brand-700"
-              >
-                <Icon name="ArrowRight" className="h-5 w-5" />
-              </button>
-
-              <span className="ml-3 font-display text-sm font-semibold text-neutral-500">
-                {String(i + 1).padStart(2, '0')}
-                <span className="mx-1 text-neutral-300">/</span>
-                {String(TESTIMONIALS.length).padStart(2, '0')}
-              </span>
-
-              {/* autoplay progress — keyed so it restarts on every change */}
-              {!reduced && (
-                <span className="ml-2 h-1 w-24 overflow-hidden rounded-full bg-neutral-200">
-                  <motion.span
-                    key={`${i}-${paused}`}
-                    className="block h-full rounded-full bg-brand-500"
-                    initial={{ width: '0%' }}
-                    animate={{ width: paused ? '0%' : '100%' }}
-                    transition={{
-                      duration: paused ? 0.2 : AUTOPLAY_MS / 1000,
-                      ease: 'linear',
-                    }}
-                  />
-                </span>
-              )}
-            </div>
-          </Reveal>
-
-          {/* avatar picker */}
-          <Reveal delay={0.2}>
-            <div className="mt-8 flex flex-wrap gap-2.5">
-              {TESTIMONIALS.map((person, idx) => (
-                <button
-                  key={person.name}
-                  type="button"
-                  onClick={() => select(idx)}
-                  aria-label={`Read ${person.name}'s story`}
-                  className={cn(
-                    'relative h-12 w-12 overflow-hidden rounded-full ring-2 ring-offset-2 transition-all duration-300',
-                    idx === i
-                      ? 'ring-brand-500 ring-offset-neutral-50'
-                      : 'opacity-45 ring-transparent hover:opacity-100',
-                  )}
-                >
-                  <Img src={person.avatar} alt="" wrapperClassName="h-full w-full" />
-                </button>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-
-        {/* ---- card ---- */}
-        <div className="relative min-h-[30rem]">
-          <AnimatePresence mode="wait" custom={dir}>
+      <div className="mt-14 grid items-center gap-14 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
+        {/* ---- the selected story ---- */}
+        <div className="relative min-h-[27rem] sm:min-h-[25rem]">
+          <AnimatePresence mode="wait">
             <motion.figure
               key={t.name}
-              custom={dir}
-              initial={{ opacity: 0, x: dir * 44 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: dir * -44 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="relative overflow-hidden rounded-[2rem] bg-ink-900 p-8 text-white sm:p-10"
+              initial={reduced ? false : { opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              // AnimatePresence runs exit before enter, so both tweens come out
+              // of the same 2s window — the exit is deliberately the quicker half
+              exit={reduced ? undefined : { opacity: 0, y: -14, transition: { duration: 0.2 } }}
+              transition={{ duration: 0.32, ease: EASE }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-brand-900/70 via-ink-900 to-ink-950" />
-              <div className="noise absolute inset-0" />
+              <h3 className="font-display text-[clamp(2.4rem,5vw,3.6rem)] font-extrabold leading-[.95] tracking-tight text-brand-600">
+                {firstName}
+                <br />
+                {lastName.join(' ')}
+              </h3>
 
-              <Icon
-                name="Quote"
-                className="absolute right-8 top-8 h-20 w-20 text-white/[.05]"
-              />
+              <p className="mt-4 font-display text-[13px] font-bold uppercase tracking-[.18em] text-ink-900/70">
+                {t.role}
+              </p>
+              <p className="mt-1 text-[13.5px] text-neutral-600">{t.since}</p>
 
-              <div className="relative">
-                <div className="flex gap-1">
-                  {Array.from({ length: 5 }).map((_, s) => (
-                    <Icon key={s} name="Star" className="h-4 w-4 fill-volt-500 text-volt-500" />
-                  ))}
-                </div>
-
-                <blockquote className="mt-7 font-display text-xl font-medium leading-relaxed text-white/90 sm:text-2xl">
-                  “{t.quote}”
-                </blockquote>
-
-                <div className="mt-9 flex flex-wrap items-end justify-between gap-6 border-t border-white/10 pt-7">
-                  <figcaption className="flex items-center gap-4">
-                    <Img
-                      src={t.avatar}
-                      alt=""
-                      wrapperClassName="h-14 w-14 shrink-0 rounded-full"
-                    />
-                    <span>
-                      <span className="block font-display font-bold text-white">{t.name}</span>
-                      <span className="block text-sm text-white/65">{t.role}</span>
-                      <span className="mt-0.5 block text-[12px] text-white/55">{t.since}</span>
-                    </span>
-                  </figcaption>
-
-                  <div className="text-right">
-                    <p className="font-display text-3xl font-extrabold text-volt-400">{t.metric}</p>
-                    <p className="text-[12.5px] text-white/65">{t.metricLabel}</p>
-                  </div>
-                </div>
+              <div className="mt-6 flex gap-1">
+                {Array.from({ length: 5 }).map((_, s) => (
+                  <Icon key={s} name="Star" className="h-4 w-4 fill-brand-500 text-brand-500" />
+                ))}
               </div>
+
+              <blockquote className="mt-5 max-w-xl text-[17px] leading-[1.7] text-ink-900/80">
+                <Icon name="Quote" className="mb-2 h-7 w-7 text-brand-500/30" />“{t.quote}”
+              </blockquote>
+
+              <figcaption className="mt-7 flex items-baseline gap-3 border-t border-ink-900/10 pt-6">
+                <span className="font-display text-3xl font-extrabold text-ink-900">{t.metric}</span>
+                <span className="text-[13px] text-neutral-600">{t.metricLabel}</span>
+              </figcaption>
             </motion.figure>
           </AnimatePresence>
         </div>
+
+        {/* ---- the cluster ---- */}
+        <Reveal delay={0.1}>
+          <div className="relative mx-auto aspect-square w-full max-w-[32rem]">
+            {/* Faint orbit path, so the scatter reads as deliberate. Kept very
+                light — the seats sit at slightly different radii on purpose, and
+                a crisp ring would advertise the mismatch. */}
+            <span
+              aria-hidden="true"
+              className="absolute inset-[6%] rounded-full border border-dashed border-brand-600/10"
+            />
+
+            {/* centre — the person currently being read */}
+            <div className="absolute left-1/2 top-1/2 h-[46%] w-[46%] -translate-x-1/2 -translate-y-1/2">
+              <div className="absolute inset-0 rounded-full bg-white shadow-lift" />
+
+              {/* The ring doubles as the autoplay countdown. Keyed on the pair so
+                  it restarts on every change and unwinds the moment we pause. */}
+              <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full -rotate-90">
+                <circle cx="50" cy="50" r="46.5" fill="none" stroke="#D1FADF" strokeWidth="2.5" />
+                {!reduced && (
+                  <motion.circle
+                    key={`${i}-${paused}`}
+                    cx="50"
+                    cy="50"
+                    r="46.5"
+                    fill="none"
+                    stroke="#12B76A"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: paused ? 0 : 1 }}
+                    transition={{ duration: paused ? 0.25 : AUTOPLAY_MS / 1000, ease: 'linear' }}
+                  />
+                )}
+              </svg>
+
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={t.name}
+                  initial={reduced ? false : { opacity: 0, scale: 0.92 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={reduced ? undefined : { opacity: 0, scale: 1.05, transition: { duration: 0.18 } }}
+                  transition={{ duration: 0.3, ease: EASE }}
+                  className="absolute inset-[7%] overflow-hidden rounded-full"
+                >
+                  <Img
+                    src={t.avatar}
+                    alt={t.name}
+                    wrapperClassName="absolute inset-0"
+                    className="object-cover"
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* orbiting picks */}
+            {TESTIMONIALS.map((person, idx) => {
+              const seat = SEATS[idx % SEATS.length]
+              const active = idx === i
+
+              return (
+                <motion.button
+                  key={person.name}
+                  type="button"
+                  onClick={() => {
+                    setPaused(true)
+                    setI(idx)
+                  }}
+                  aria-label={`Read ${person.name}'s story`}
+                  aria-pressed={active}
+                  className={cn(
+                    'group absolute -translate-x-1/2 -translate-y-1/2 rounded-full bg-white p-[3px] shadow-lift outline-none transition-[box-shadow,transform] duration-300',
+                    'hover:z-10 hover:scale-[1.09] focus-visible:ring-4 focus-visible:ring-brand-500/40',
+                    active && 'z-10 ring-[3px] ring-brand-500',
+                  )}
+                  style={{
+                    left: `${seat.x}%`,
+                    top: `${seat.y}%`,
+                    width: `${seat.size}%`,
+                    height: `${seat.size}%`,
+                  }}
+                  initial={reduced ? false : { opacity: 0, scale: 0.6 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ duration: 0.55, delay: 0.12 + idx * 0.08, ease: EASE }}
+                >
+                  <span
+                    className={cn(
+                      'relative block h-full w-full overflow-hidden rounded-full transition-all duration-300',
+                      active
+                        ? 'opacity-100 grayscale-0'
+                        : 'opacity-70 grayscale group-hover:opacity-100 group-hover:grayscale-0',
+                    )}
+                  >
+                    <Img
+                      src={person.avatar}
+                      alt=""
+                      wrapperClassName="absolute inset-0"
+                      className="object-cover"
+                    />
+                  </span>
+                </motion.button>
+              )
+            })}
+          </div>
+        </Reveal>
       </div>
     </Section>
   )

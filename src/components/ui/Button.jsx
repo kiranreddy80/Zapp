@@ -12,8 +12,7 @@ const VARIANTS = {
   outline:
     'border border-neutral-300 bg-white text-ink-900 hover:border-brand-400 hover:text-brand-700 focus-visible:outline-brand-600',
   ghost: 'text-ink-900 hover:bg-neutral-100 focus-visible:outline-brand-600',
-  glass:
-    'glass text-white hover:bg-white/20 focus-visible:outline-white',
+  glass: 'glass text-white hover:bg-white/20 focus-visible:outline-white',
   'outline-light':
     'border border-white/30 text-white hover:border-white hover:bg-white/10 focus-visible:outline-white',
 }
@@ -24,10 +23,23 @@ const SIZES = {
   lg: 'h-14 px-8 text-base gap-2.5',
 }
 
+/** Trailing icon sizes, when rendered inside a chip. */
+const CHIP = {
+  sm: 'h-6 w-6',
+  md: 'h-7 w-7',
+  lg: 'h-8 w-8',
+}
+
 /**
  * One button, three renderers: react-router <Link>, plain <a>, or <button>.
- * The trailing icon slides on hover, and a light sheen sweeps across on
- * hover for the filled variants.
+ *
+ * Optional treatments:
+ *  - `chip`  puts the trailing icon in a circular well that brightens and
+ *            nudges on hover — more deliberate than a bare arrow for a
+ *            headline CTA.
+ *  - `beam`  wraps the button in a slowly rotating conic border, for the one
+ *            call to action on a page that should feel energised. Used
+ *            sparingly; on every button it would be noise.
  */
 export default function Button({
   children,
@@ -37,13 +49,18 @@ export default function Button({
   size = 'md',
   icon = 'ArrowRight',
   iconPosition = 'right',
+  chip = false,
+  beam = false,
   className,
   full,
   ...rest
 }) {
+  const onDark = variant === 'glass' || variant === 'outline-light' || variant === 'volt'
+
   const classes = cn(
     'group/btn relative inline-flex items-center justify-center overflow-hidden rounded-full font-semibold',
-    'transition-all duration-300 active:scale-[.97]',
+    // Tactile press: settles down a pixel rather than only shrinking.
+    'transition-all duration-300 active:translate-y-[1px] active:scale-[.98]',
     'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
     VARIANTS[variant] ?? VARIANTS.primary,
     SIZES[size] ?? SIZES.md,
@@ -51,36 +68,55 @@ export default function Button({
     className,
   )
 
+  const trailing =
+    icon && iconPosition === 'right' ? (
+      chip ? (
+        <span
+          className={cn(
+            'relative grid shrink-0 place-items-center rounded-full transition-all duration-300',
+            CHIP[size] ?? CHIP.md,
+            onDark ? 'bg-ink-900/15' : 'bg-white/20',
+            'group-hover/btn:translate-x-0.5',
+            onDark ? 'group-hover/btn:bg-ink-900/25' : 'group-hover/btn:bg-white/30',
+          )}
+        >
+          <Icon name={icon} className="h-[0.95em] w-[0.95em]" />
+        </span>
+      ) : (
+        <Icon
+          name={icon}
+          className="relative h-[1.05em] w-[1.05em] transition-transform duration-300 group-hover/btn:translate-x-1"
+        />
+      )
+    ) : null
+
   const inner = (
     <>
       {/* hover sheen */}
       <span className="pointer-events-none absolute inset-0 -translate-x-full bg-brand-sheen opacity-0 transition-opacity duration-300 group-hover/btn:animate-sheen group-hover/btn:opacity-100" />
+
       {icon && iconPosition === 'left' && (
         <Icon
           name={icon}
           className="relative h-[1.05em] w-[1.05em] transition-transform duration-300 group-hover/btn:-translate-x-0.5"
         />
       )}
+
       <span className="relative">{children}</span>
-      {icon && iconPosition === 'right' && (
-        <Icon
-          name={icon}
-          className="relative h-[1.05em] w-[1.05em] transition-transform duration-300 group-hover/btn:translate-x-1"
-        />
-      )}
+      {trailing}
     </>
   )
 
+  let element
+
   if (to) {
-    return (
+    element = (
       <Link to={to} className={classes} {...rest}>
         {inner}
       </Link>
     )
-  }
-
-  if (href) {
-    return (
+  } else if (href) {
+    element = (
       <a
         href={href}
         className={classes}
@@ -91,11 +127,19 @@ export default function Button({
         {inner}
       </a>
     )
+  } else {
+    element = (
+      <button type="button" className={classes} {...rest}>
+        {inner}
+      </button>
+    )
   }
 
-  return (
-    <button type="button" className={classes} {...rest}>
-      {inner}
-    </button>
+  // The beam lives on a wrapper: the button itself clips its contents for the
+  // sheen, which would cut off a ring drawn inside it.
+  return beam ? (
+    <span className={cn('current-ring inline-flex rounded-full', full && 'w-full')}>{element}</span>
+  ) : (
+    element
   )
 }

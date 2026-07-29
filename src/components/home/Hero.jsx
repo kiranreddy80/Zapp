@@ -16,6 +16,13 @@ import Magnetic from '@/components/ui/Magnetic'
 
 const EASE = [0.22, 1, 0.36, 1]
 
+/**
+ * How small the hero panel starts before scrolling opens it out.
+ * 0.3 keeps the layout readable as it grows; lower values look more dramatic
+ * but reduce the content to an illegible thumbnail on the way in.
+ */
+const START_SCALE = 0.3
+
 const TRUST = [
   { icon: 'FileCheck', label: 'No licence required' },
   { icon: 'ShieldCheck', label: '₹5L accident cover' },
@@ -75,11 +82,45 @@ export default function Hero() {
   const cardY = useTransform(smooth, [0, 1], [0, -70])
   const copyY = useTransform(smooth, [0, 1], [0, 40])
 
+  /*
+   * Scroll-driven open.
+   *
+   * The hero arrives as a small rounded panel in the middle of the screen and
+   * grows to full bleed as the reader scrolls into it. Driven by scroll
+   * position, so it is continuous and reversible rather than a one-shot
+   * animation — scrolling back up closes it again.
+   *
+   * Range: starts as the section's top edge enters the viewport, finishes once
+   * its top reaches roughly a third up the screen, so it is fully open well
+   * before the reader is trying to read it.
+   */
+  const { scrollYProgress: openProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'start 30%'],
+  })
+  const open = useSpring(openProgress, { stiffness: 110, damping: 28, restDelta: 0.001 })
+
+  const panelScale = useTransform(open, [0, 1], [START_SCALE, 1])
+  const panelRadius = useTransform(open, [0, 1], [56, 0])
+  const panelOpacity = useTransform(open, [0, 0.35], [0.55, 1])
+
+  const panelStyle = reduced
+    ? undefined
+    : { scale: panelScale, borderRadius: panelRadius, opacity: panelOpacity }
+
   return (
     <section
+      id="hero"
       ref={sectionRef}
-      className="relative isolate overflow-hidden bg-[#F6F8F7] pb-16 pt-32 sm:pt-36 lg:pb-20 lg:pt-40"
+      // The outer box carries the page colour and keeps its full height while
+      // the panel inside scales, so the surrounding area reads as the page
+      // rather than an empty gap.
+      className="relative isolate bg-[#F1FAF4]"
     >
+      <motion.div
+        style={panelStyle}
+        className="relative isolate overflow-hidden bg-[#F1FAF4] pb-16 pt-32 will-change-transform sm:pt-36 lg:pb-20 lg:pt-40"
+      >
       {/* backdrop: faint grid + a brand glow bleeding in from the right */}
       <div
         aria-hidden="true"
@@ -346,7 +387,8 @@ export default function Hero() {
             </div>
           ))}
         </motion.dl>
-      </div>
+        </div>
+      </motion.div>
     </section>
   )
 }

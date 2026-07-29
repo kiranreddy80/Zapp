@@ -197,7 +197,7 @@ export default function GetStarted() {
   const pct = Math.round(((active + 1) / APP_STEPS.length) * 100)
 
   return (
-    <Section id="get-started" tone="muted">
+    <Section id="get-started" tone="mint">
       <SectionHeading
         eyebrow="Getting started"
         title="Seven steps from download to your first payout"
@@ -207,12 +207,14 @@ export default function GetStarted() {
       <div className="mt-14 grid gap-8 lg:grid-cols-[.85fr_1.15fr] lg:gap-10">
         {/* ------------------------------------------------- phone ---- */}
         <Reveal from="right">
-          <div className="relative flex h-full flex-col items-center justify-center overflow-hidden rounded-[2rem] bg-ink-900 p-8 sm:p-10">
+          <div className="relative flex h-full flex-col items-center justify-center overflow-hidden rounded-[2rem] bg-ink-900 p-6 sm:p-10">
             <div className="absolute inset-0 bg-gradient-to-br from-brand-900/50 via-ink-900 to-ink-950" />
             <Spotlight size={380} opacity={0.2} />
             <div className="noise absolute inset-0" />
 
-            <div className="relative w-[15rem]">
+            {/* the device is a fixed width by design — stepped down one notch so
+                it plus the panel padding still fits a 320px viewport */}
+            <div className="relative w-[14rem] sm:w-[15rem]">
               {/* device */}
               <div className="rounded-[2.2rem] border-[9px] border-ink-700 bg-ink-700 shadow-lift">
                 <div className="relative overflow-hidden rounded-[1.6rem] bg-neutral-50">
@@ -278,8 +280,12 @@ export default function GetStarted() {
                 const isActive = i === active
                 const isDone = i < active
 
+                // min-w-0 on the <li>: the sub-label below is `truncate`, and its
+                // white-space:nowrap gives this grid item a min-content floor wider
+                // than a 320px viewport. Clearing the automatic minimum lets the
+                // track shrink so the label actually truncates.
                 return (
-                  <li key={s.title}>
+                  <li key={s.title} className="min-w-0">
                     <button
                       type="button"
                       onClick={() => setActive(i)}
