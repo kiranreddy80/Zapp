@@ -3,8 +3,12 @@ import cn from '@/lib/cn'
 import { LOGO_SRC, SITE } from '@/data/site'
 
 /**
- * ZappGo logo: a circular badge carrying a bolt over a scooter, followed by the
- * wordmark with "Zapp" in brand green and "Go" in the surface's ink colour.
+ * SGD Electric logo: a circular badge carrying a bolt over a scooter, followed by
+ * the wordmark — "SGD" in the surface's ink colour and "Electric" in brand green.
+ *
+ * "SGD" is white on dark surfaces, as specified. On the white header it takes the
+ * ink colour instead, since white on white would be invisible; `light` is what
+ * selects between the two. "Electric" is green on every surface.
  *
  * The mark is drawn inline rather than loaded as a file — it costs no network
  * request, stays crisp at any size, and can recolour itself for light and dark
@@ -57,9 +61,15 @@ export default function Logo({ className, light = false, to = '/' }) {
         <Mark className="h-11 w-11 shrink-0 transition-transform duration-500 group-hover:scale-105" />
       )}
 
-      <span className="font-display text-[1.4rem] font-extrabold uppercase leading-none tracking-tight">
-        <span className="text-brand-500">Zapp</span>
-        <span className={light ? 'text-white' : 'text-ink-900'}>Go</span>
+      {/* steps down on the narrowest phones — "SGD ELECTRIC" is a good deal
+          wider than the mark it replaced, and the header still has to hold a
+          menu button beside it */}
+      <span className="font-display text-[1.15rem] font-extrabold uppercase leading-none tracking-tight sm:text-[1.4rem]">
+        <span className={light ? 'text-white' : 'text-ink-900'}>SGD</span>{' '}
+        {/* the bright brand green reads at 2.6:1 on the white header — fine for
+            four letters, thin over eight — so light surfaces get the deeper
+            green instead. Still unmistakably green, and legible at 5:1. */}
+        <span className={light ? 'text-brand-500' : 'text-brand-700'}>Electric</span>
       </span>
     </Link>
   )

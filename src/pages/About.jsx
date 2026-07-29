@@ -32,7 +32,7 @@ import { formatDate } from '@/lib/format'
 import cn from '@/lib/cn'
 
 /* ------------------------------------------------------------------ */
-/* Life at Zapp — culture carousel                                     */
+/* Life at SGD — culture carousel                                     */
 /* ------------------------------------------------------------------ */
 
 function LifeCarousel() {
@@ -111,7 +111,7 @@ function LifeCarousel() {
 const REASONS = [
   { label: 'Become a franchise partner', to: '/franchise', icon: 'Store' },
   { label: 'Advertise your brand', to: '/advertising', icon: 'Megaphone' },
-  { label: 'Join as a Zapp rider', to: '/deliver-and-earn', icon: 'Bike' },
+  { label: 'Join as a SGD rider', to: '/deliver-and-earn', icon: 'Bike' },
   { label: 'Business partnership', to: '/ev-for-delivery', icon: 'Truck' },
   { label: 'Rent to own', to: '/rent-to-own', icon: 'KeyRound' },
   { label: 'Invest in a fleet', to: '/investor-relations', icon: 'TrendingUp' },
@@ -188,7 +188,7 @@ export default function About() {
     <>
       <Seo
         title="Who We Are"
-        description="Zapp Electric is India's EV fleet for last-mile delivery. Founded 2019 in Gurugram, now 24,000 riders and 26,400 vehicles across 12 cities. Our mission, journey, team and measured impact."
+        description="SGD Electric is India's EV fleet for last-mile delivery. Founded 2019 in Gurugram, now 24,000 riders and 26,400 vehicles across 12 cities. Our mission, journey, team and measured impact."
         image={IMG.teamCollab}
         path="/about"
       />
@@ -247,7 +247,7 @@ export default function About() {
           <SectionHeading
             dark
             align="left"
-            eyebrow="Journey of Zapp Electric"
+            eyebrow="Journey of SGD Electric"
             title="We are not just a team, we are a tribe"
             lead="Seven years of building India's sustainable delivery infrastructure — told with the funding rounds and the fleet numbers, including the year we threw the original model away."
             className="max-w-2xl"
@@ -335,7 +335,7 @@ export default function About() {
         <SectionHeading
           dark
           eyebrow="ESG"
-          title="Zapp is an ESG-compliant business"
+          title="SGD is an ESG-compliant business"
           lead="Our work maps onto eight of the UN Sustainable Development Goals. We use the official SDG numbering, and we only claim a goal where we can show a measured contribution."
         />
 
@@ -493,7 +493,7 @@ export default function About() {
         cols={4}
       />
 
-      {/* ---- 8. Life at Zapp ---- */}
+      {/* ---- 8. Life at SGD ---- */}
       <Section id="life" tone="dark" className="overflow-hidden">
         <Glow className="-left-20 bottom-0 h-80 w-80" />
 
@@ -502,7 +502,7 @@ export default function About() {
             dark
             align="left"
             eyebrow="Our culture"
-            title="Life at Zapp"
+            title="Life at SGD"
             lead="Ninety per cent of us are at a hub, in a service bay or on the road with riders — not in an office. These are the ordinary weeks."
             className="max-w-2xl"
           />
@@ -596,7 +596,7 @@ export default function About() {
 
             <Reveal delay={0.1}>
               <h2 className="mt-9 text-3xl leading-tight text-white sm:text-4xl">
-                The Zapp corporate film
+                The SGD corporate film
               </h2>
             </Reveal>
             <Reveal delay={0.16}>
@@ -615,7 +615,7 @@ export default function About() {
           <SectionHeading
             align="left"
             eyebrow="We are in the news"
-            title="Zapp, everywhere"
+            title="SGD, everywhere"
             className="max-w-xl"
           />
           <Button to="/news" variant="outline" className="shrink-0">

@@ -33,8 +33,8 @@ export default function Careers() {
   return (
     <>
       <Seo
-        title="Careers — Work at Zapp Electric"
-        description="Join Zapp Electric. Engineering, operations, data, design and ESG roles across India. ESOPs at every level, remote-first engineering, 26-week parental leave."
+        title="Careers — Work at SGD Electric"
+        description="Join SGD Electric. Engineering, operations, data, design and ESG roles across India. ESOPs at every level, remote-first engineering, 26-week parental leave."
         image={IMG.teamMeeting}
         path="/careers"
       />
@@ -56,7 +56,7 @@ export default function Careers() {
           See open roles
         </Button>
         <Button to="/about" variant="outline-light" size="lg">
-          About Zapp
+          About SGD
         </Button>
       </PageHero>
 
@@ -66,7 +66,7 @@ export default function Careers() {
           <div>
             <SectionHeading
               align="left"
-              eyebrow="Life at Zapp"
+              eyebrow="Life at SGD"
               title="Ninety per cent of us are not in an office"
               lead="Our people are at hubs, in service bays and on the road with riders. Engineering and design run remote-first; operations is field-first, because that is where the problems are."
             />
@@ -226,7 +226,7 @@ export default function Careers() {
           { title: 'Week 2 — Founder chat and offer', body: 'We aim to give a decision within two working days of the last round.' },
         ]}
         image={IMG.teamDiverse}
-        imageAlt="Interview conversation at Zapp"
+        imageAlt="Interview conversation at SGD"
         stat={{ value: '~2 wks', label: 'median time to offer' }}
         tone="light"
         flip
@@ -246,7 +246,7 @@ export default function Careers() {
         title="Come build the boring, important things"
         lead="Battery telemetry, hub inventory, payout reconciliation. Unglamorous systems are what let 24,000 people earn a living every day."
         primary={{ label: 'See open roles', to: '/careers' }}
-        secondary={{ label: 'Learn about Zapp', to: '/about' }}
+        secondary={{ label: 'Learn about SGD', to: '/about' }}
         points={['ESOPs at every level', 'Remote-first engineering', '₹75k learning budget']}
       />
     </>

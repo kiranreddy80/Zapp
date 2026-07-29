@@ -80,7 +80,7 @@ export default function OurJourney() {
         <div className="max-w-xl">
           <Reveal>
             <span className="text-[11px] font-semibold uppercase tracking-[.2em] text-brand-700">
-              Journey of Zapp Electric
+              Journey of SGD Electric
             </span>
           </Reveal>
 

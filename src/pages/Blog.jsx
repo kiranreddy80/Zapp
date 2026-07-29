@@ -89,7 +89,7 @@ export default function Blog() {
     <>
       <Seo
         title="Blog"
-        description="Rider guides, fleet economics, battery technology and sustainability writing from the Zapp Electric team."
+        description="Rider guides, fleet economics, battery technology and sustainability writing from the SGD Electric team."
         image={IMG.riderRoad}
         path="/blog"
       />

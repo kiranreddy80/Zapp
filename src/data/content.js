@@ -34,7 +34,7 @@ export const PARTNERS = [
 ]
 
 /**
- * Benefit tiles for the "Why choose Zapp" section.
+ * Benefit tiles for the "Why choose SGD" section.
  *
  * Figures are deliberately kept in step with the rest of the site — the rental
  * pages quote ₹129/day, the hero quotes ₹9,400 saved and 24,000 riders, and the
@@ -54,7 +54,7 @@ export const WHY_CHOOSE = [
   { title: 'Zero fuel cost', value: '100', unit: '%', note: 'Electric, no petrol bills' },
 ]
 
-export const WHY_ZAPP = [
+export const WHY_SGD = [
   {
     icon: 'Fuel',
     title: 'No fuel bills, ever',
@@ -72,7 +72,7 @@ export const WHY_ZAPP = [
   {
     icon: 'BatteryCharging',
     title: '900+ swap points',
-    body: 'Never wait for a charge. Pull into any Zapp point, swap a depleted pack for a full one and be back on the road in 90 seconds.',
+    body: 'Never wait for a charge. Pull into any SGD point, swap a depleted pack for a full one and be back on the road in 90 seconds.',
     stat: '90 sec',
     statLabel: 'battery swap time',
   },
@@ -103,7 +103,7 @@ export const HOW_IT_WORKS = [
   {
     step: '01',
     title: 'Download & sign up',
-    body: 'Install the Zapp Rider app, enter your mobile number and pick the city and hub closest to you. Takes about two minutes.',
+    body: 'Install the SGD Rider app, enter your mobile number and pick the city and hub closest to you. Takes about two minutes.',
     icon: 'Smartphone',
     image: IMG.riderBike,
   },
@@ -182,18 +182,18 @@ export const APP_STEPS = [
 
 /** Vehicle rows shown on the mock "select vehicle" screen. */
 export const APP_VEHICLES = [
-  { name: 'Zapp City 25', range: '95 km', price: '₹129', note: 'no licence' },
-  { name: 'Zapp Sprint 65', range: '130 km', price: '₹179', note: 'licence required' },
-  { name: 'Zapp Haul', range: '110 km', price: '₹199', note: '90 L box' },
+  { name: 'SGD City 25', range: '95 km', price: '₹129', note: 'no licence' },
+  { name: 'SGD Sprint 65', range: '130 km', price: '₹179', note: 'licence required' },
+  { name: 'SGD Haul', range: '110 km', price: '₹199', note: '90 L box' },
 ]
 
 export const TESTIMONIALS = [
   {
     name: 'Ramesh Yadav',
     role: 'Rider · Gurugram',
-    since: 'With Zapp since 2022',
+    since: 'With SGD since 2022',
     quote:
-      'I used to spend ₹380 a day on petrol and servicing. With Zapp my whole cost is the rental, and my take-home went from ₹19,000 to ₹34,000 a month. I bought my daughter a laptop last Diwali.',
+      'I used to spend ₹380 a day on petrol and servicing. With SGD my whole cost is the rental, and my take-home went from ₹19,000 to ₹34,000 a month. I bought my daughter a laptop last Diwali.',
     metric: '₹34,000',
     metricLabel: 'monthly take-home',
     avatar: avatar(34423732),
@@ -201,7 +201,7 @@ export const TESTIMONIALS = [
   {
     name: 'Sunita Devi',
     role: 'Rider · Bengaluru',
-    since: 'With Zapp since 2023',
+    since: 'With SGD since 2023',
     quote:
       'I was nervous about riding at first. The low-speed scooter needs no licence, the training at the hub was patient, and now I do 40 orders a day. Two other women from my colony joined after me.',
     metric: '40',
@@ -213,7 +213,7 @@ export const TESTIMONIALS = [
     role: 'Fleet owner · Mumbai',
     since: 'Franchise partner',
     quote:
-      'I run 60 Zapp vehicles out of one hub in Andheri. The dashboard tells me exactly which vehicle is idle, which battery is weak, and what I earned yesterday. It runs itself.',
+      'I run 60 SGD vehicles out of one hub in Andheri. The dashboard tells me exactly which vehicle is idle, which battery is weak, and what I earned yesterday. It runs itself.',
     metric: '60',
     metricLabel: 'vehicles managed',
     avatar: avatar(2324638),
@@ -223,7 +223,7 @@ export const TESTIMONIALS = [
     role: 'Ops lead · Quick commerce',
     since: 'Enterprise client',
     quote:
-      'We moved 300 dark-store deliveries a day onto Zapp loaders. Cost per drop fell 31% and we finally have clean Scope 3 numbers for our sustainability report.',
+      'We moved 300 dark-store deliveries a day onto SGD loaders. Cost per drop fell 31% and we finally have clean Scope 3 numbers for our sustainability report.',
     metric: '-31%',
     metricLabel: 'cost per delivery',
     avatar: avatar(34381970),
@@ -231,7 +231,7 @@ export const TESTIMONIALS = [
   {
     name: 'Vikram Singh',
     role: 'Rider · Delhi NCR',
-    since: 'With Zapp since 2021',
+    since: 'With SGD since 2021',
     quote:
       'Four years, zero breakdown days that cost me money. If something goes wrong they swap the vehicle at the hub and I keep riding. That reliability is the whole business for us.',
     metric: '4 yrs',
@@ -241,7 +241,7 @@ export const TESTIMONIALS = [
   {
     name: 'Priya Nair',
     role: 'Rider · Pune',
-    since: 'With Zapp since 2024',
+    since: 'With SGD since 2024',
     quote:
       'Rent to Own was the reason I joined. Twenty-four months of the same payment I was making anyway, and the scooter becomes mine. My family could never have financed that upfront.',
     metric: '24 mo',
@@ -252,12 +252,12 @@ export const TESTIMONIALS = [
 
 export const FAQS = [
   {
-    q: 'Do I need a driving licence to ride a Zapp scooter?',
+    q: 'Do I need a driving licence to ride a SGD scooter?',
     a: 'Not for our low-speed models. Vehicles capped at 25 km/h are classified as non-registrable under Indian rules, so no licence or RC is required. Our higher-speed models and all 3-wheeler cargo loaders do require a valid licence.',
   },
   {
     q: 'What does the rental actually include?',
-    a: 'The vehicle, comprehensive insurance, ₹5 lakh personal accident cover, all servicing and spares, roadside assistance, and unlimited battery swaps at any Zapp point. You pay one rental amount and nothing else.',
+    a: 'The vehicle, comprehensive insurance, ₹5 lakh personal accident cover, all servicing and spares, roadside assistance, and unlimited battery swaps at any SGD point. You pay one rental amount and nothing else.',
   },
   {
     q: 'How much can I realistically earn?',
@@ -294,7 +294,7 @@ export const PLANS_2W = [
     name: 'Daily',
     price: '₹129',
     unit: '/ day',
-    blurb: 'Best for trying Zapp or riding a few days a week.',
+    blurb: 'Best for trying SGD or riding a few days a week.',
     features: [
       'Any low-speed scooter model',
       'Unlimited battery swaps',
@@ -446,7 +446,7 @@ export const FRANCHISE_TIERS = [
       'Territory rights for one pin-code cluster',
       'Vehicles supplied on lease',
       'Charging and swap infrastructure',
-      'Rider sourcing handled by Zapp',
+      'Rider sourcing handled by SGD',
       'Training for you and two staff',
     ],
   },
@@ -460,7 +460,7 @@ export const FRANCHISE_TIERS = [
       'Exclusive rights across a city zone',
       'Priority vehicle allocation',
       'On-site service bay and spares stock',
-      'Dedicated Zapp ops manager',
+      'Dedicated SGD ops manager',
       'Co-funded local marketing',
       'Advertising revenue share',
     ],
@@ -477,7 +477,7 @@ export const FRANCHISE_TIERS = [
       'Rights to an entire tier-2 city',
       'Sub-franchise appointment rights',
       'Enterprise client introductions',
-      'Full ZappOS licence',
+      'Full SGD OS licence',
       'Board-level quarterly reviews',
       'First refusal on adjacent districts',
     ],
@@ -502,7 +502,7 @@ export const AD_FORMATS = [
   {
     icon: 'Smartphone',
     title: 'In-app placements',
-    body: 'Reach 24,000+ riders inside the Zapp Rider app — a hard-to-target audience for finance, insurance, telecom and FMCG brands.',
+    body: 'Reach 24,000+ riders inside the SGD Rider app — a hard-to-target audience for finance, insurance, telecom and FMCG brands.',
     metric: '61%',
     metricLabel: 'daily active riders',
   },
@@ -668,13 +668,13 @@ export const PARTNER_IMPACT = [
   { name: 'Rapido', co2: '310 t', deliveries: '0.7 M' },
 ]
 
-/** Culture gallery for the "Life at Zapp" section. */
+/** Culture gallery for the "Life at SGD" section. */
 export const LIFE_GALLERY = [
   { src: IMG.teamMeeting, caption: 'Monday fleet review, Gurugram' },
   { src: IMG.workshopTools, caption: 'Service bay training, Bengaluru hub' },
   { src: IMG.teamCollab, caption: 'Planning the tier-2 rollout' },
   { src: IMG.mechanicsChecking, caption: 'Technician certification week' },
-  { src: IMG.teamProject, caption: 'ZappOS release retro' },
+  { src: IMG.teamProject, caption: 'SGD OS release retro' },
   { src: IMG.teamDiverse, caption: 'New joiner cohort, March' },
 ]
 
@@ -683,7 +683,7 @@ export const TEAM_VOICES = [
   {
     name: 'Nikhil Ranjan',
     role: 'Senior Engineer, Fleet Platform',
-    tenure: '3 years at Zapp',
+    tenure: '3 years at SGD',
     quote:
       'I came from a payments company where a bug meant a failed transaction. Here a bug means a rider is stranded at 9pm with an order they cannot deliver. That changes how carefully you write things, and it is the reason I am still here.',
     photo: avatar(2324638),
@@ -691,7 +691,7 @@ export const TEAM_VOICES = [
   {
     name: 'Shweta Kulkarni',
     role: 'Hub Manager, Pune',
-    tenure: '4 years at Zapp',
+    tenure: '4 years at SGD',
     quote:
       'I started on the counter handing out keys. I now run a 90-vehicle hub and I have hired six people myself. Nobody asked what college I went to — they asked whether the vehicles went out on time.',
     photo: avatar(29852895),
@@ -699,7 +699,7 @@ export const TEAM_VOICES = [
   {
     name: 'Arun Pillai',
     role: 'Data Scientist, Battery Analytics',
-    tenure: '2 years at Zapp',
+    tenure: '2 years at SGD',
     quote:
       'There are very few places in India where you can train a model on 900 million kilometres of real vehicle data and then watch it stop a breakdown next week. The feedback loop is measured in days, not quarters.',
     photo: avatar(34423732),
@@ -708,12 +708,12 @@ export const TEAM_VOICES = [
 
 export const ABOUT_FAQS = [
   {
-    q: 'What exactly does Zapp Electric do?',
+    q: 'What exactly does SGD Electric do?',
     a: 'We rent electric two-wheelers and three-wheeler cargo loaders to delivery riders and logistics businesses in India. The rental includes the vehicle, insurance, all servicing and unlimited battery swaps — so a rider pays one predictable amount and nothing else. We also place riders with delivery platforms, run a franchise network of hubs, and sell advertising space on the fleet.',
   },
   {
     q: 'Who founded the company and when?',
-    a: 'Zapp was founded in Gurugram in 2019 by Aditya Rao and Meera Krishnan, after a pilot with eleven delivery riders testing whether electric could beat petrol on rider economics rather than on emissions alone.',
+    a: 'SGD was founded in Gurugram in 2019 by Aditya Rao and Meera Krishnan, after a pilot with eleven delivery riders testing whether electric could beat petrol on rider economics rather than on emissions alone.',
   },
   {
     q: 'How does the business actually make money?',
@@ -721,7 +721,7 @@ export const ABOUT_FAQS = [
   },
   {
     q: 'Do you manufacture the vehicles?',
-    a: 'No. We design the specification and the telematics hardware, and contract manufacturing to Indian OEM partners. Our own engineering is concentrated on ZappOS, the battery swap network and the prediction models — the things that determine whether a fleet of this size stays reliable.',
+    a: 'No. We design the specification and the telematics hardware, and contract manufacturing to Indian OEM partners. Our own engineering is concentrated on SGD OS, the battery swap network and the prediction models — the things that determine whether a fleet of this size stays reliable.',
   },
   {
     q: 'How big is the company now?',
@@ -761,7 +761,7 @@ export const TIMELINE = [
   {
     year: '2021-22',
     short: "'22",
-    title: 'Four new cities and ZappOS v1',
+    title: 'Four new cities and SGD OS v1',
     body: 'Launched in Bengaluru, Mumbai, Pune and Hyderabad, and shipped the first version of the platform that now runs the whole fleet.',
     metrics: ['Raised $9M Series A extension', 'Fleet: 3,100 · ARR: $2.1M'],
     image: IMG.mumbaiStreet,
@@ -819,7 +819,7 @@ export const LEADERSHIP = [
   {
     name: 'Meera Krishnan',
     role: 'Co-founder & Chief Technology Officer',
-    bio: 'Ex-payments infrastructure engineer. Architected ZappOS and the telematics stack that keeps 24,000 vehicles observable in real time.',
+    bio: 'Ex-payments infrastructure engineer. Architected SGD OS and the telematics stack that keeps 24,000 vehicles observable in real time.',
     photo: avatar(34381970),
   },
   {
@@ -852,7 +852,7 @@ export const TECH_PILLARS = [
   {
     icon: 'Satellite',
     title: 'Telematics on every vehicle',
-    body: 'An onboard unit streams location, battery voltage, cell temperature, motor load and rider behaviour to ZappOS every four seconds.',
+    body: 'An onboard unit streams location, battery voltage, cell temperature, motor load and rider behaviour to SGD OS every four seconds.',
     points: ['4-second telemetry interval', 'Geofence + theft alerts', 'Crash detection with auto-escalation'],
   },
   {
@@ -937,7 +937,7 @@ export const NEWS = [
   {
     date: '2026-06-18',
     outlet: 'The Economic Times',
-    title: 'Zapp Electric raises $95M Series C to triple its battery-swap network',
+    title: 'SGD Electric raises $95M Series C to triple its battery-swap network',
     excerpt:
       'The Gurugram-based EV fleet operator will use the capital to add 2,000 swap points and enter eight new cities over the next eighteen months.',
     tag: 'Funding',
@@ -946,7 +946,7 @@ export const NEWS = [
   {
     date: '2026-05-02',
     outlet: 'Mint',
-    title: 'How Zapp made electric cheaper than petrol for India’s delivery riders',
+    title: 'How SGD made electric cheaper than petrol for India’s delivery riders',
     excerpt:
       'A close look at the unit economics that let a rider cut ₹9,400 a month from running costs without buying the vehicle.',
     tag: 'Feature',
@@ -955,16 +955,16 @@ export const NEWS = [
   {
     date: '2026-03-27',
     outlet: 'Business Standard',
-    title: 'Zapp crosses 132 million deliveries, 24,000 active riders',
+    title: 'SGD crosses 132 million deliveries, 24,000 active riders',
     excerpt:
-      'The milestone makes Zapp one of the largest electric two-wheeler fleet operators in the country by daily active vehicles.',
+      'The milestone makes SGD one of the largest electric two-wheeler fleet operators in the country by daily active vehicles.',
     tag: 'Milestone',
     image: IMG.riderCityDay,
   },
   {
     date: '2026-02-11',
     outlet: 'YourStory',
-    title: '“Dignity is a product feature” — inside Zapp’s rider welfare programme',
+    title: '“Dignity is a product feature” — inside SGD’s rider welfare programme',
     excerpt:
       'Written contracts, itemised deductions and an independent ombudsperson. Why the company treats rider trust as infrastructure.',
     tag: 'Interview',
@@ -973,7 +973,7 @@ export const NEWS = [
   {
     date: '2025-12-05',
     outlet: 'CNBC-TV18',
-    title: 'Zapp partners with three quick-commerce platforms for dark-store logistics',
+    title: 'SGD partners with three quick-commerce platforms for dark-store logistics',
     excerpt:
       'The 3-wheeler cargo fleet will handle replenishment runs across 280 dark stores in six metros.',
     tag: 'Partnership',
@@ -982,7 +982,7 @@ export const NEWS = [
   {
     date: '2025-10-21',
     outlet: 'Forbes India',
-    title: 'Zapp named to the 2025 Sustainable Mobility 50',
+    title: 'SGD named to the 2025 Sustainable Mobility 50',
     excerpt:
       'Recognised for verifiable emissions reporting and for extending formal insurance cover to informal-sector workers.',
     tag: 'Award',
@@ -1194,8 +1194,8 @@ export const PERKS = [
   },
   {
     icon: 'Bike',
-    title: 'A Zapp of your own',
-    body: 'Every employee gets a Zapp scooter for personal use, charging included.',
+    title: 'A SGD of your own',
+    body: 'Every employee gets a SGD scooter for personal use, charging included.',
   },
   {
     icon: 'Home',
@@ -1248,9 +1248,9 @@ export const CAMPAIGN = {
   intro:
     'Summer is the hardest season to ride. So we made it the most rewarding one. Complete weekly order targets between April and May and climb a prize ladder worth over ₹40 lakh in total.',
   steps: [
-    'Stay active on any Zapp rental plan through the campaign window.',
+    'Stay active on any SGD rental plan through the campaign window.',
     'Complete at least 100 delivered orders in a calendar week.',
-    'Your rank updates live on the leaderboard in the Zapp Rider app.',
+    'Your rank updates live on the leaderboard in the SGD Rider app.',
     'Weekly winners are announced every Monday; grand prizes at the close of May.',
   ],
   prizes: [

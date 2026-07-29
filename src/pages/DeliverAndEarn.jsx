@@ -19,7 +19,7 @@ const SUPPORT = [
   {
     icon: 'Users',
     title: 'We place you with a platform',
-    body: 'Zapp is an onboarding partner for every major delivery platform in India. Tell us your city and preferred shift and we route your application to the ones hiring.',
+    body: 'SGD is an onboarding partner for every major delivery platform in India. Tell us your city and preferred shift and we route your application to the ones hiring.',
   },
   {
     icon: 'GraduationCap',
@@ -52,8 +52,8 @@ export default function DeliverAndEarn() {
   return (
     <>
       <Seo
-        title="Become a Delivery Rider — Earn with Zapp"
-        description="Join 24,000+ riders earning ₹28,000–₹42,000 a month with Zapp Electric. Free training, insurance from day one, no licence needed on low-speed models."
+        title="Become a Delivery Rider — Earn with SGD"
+        description="Join 24,000+ riders earning ₹28,000–₹42,000 a month with SGD Electric. Free training, insurance from day one, no licence needed on low-speed models."
         image={IMG.riderBike}
         path="/deliver-and-earn"
       />
@@ -84,7 +84,7 @@ export default function DeliverAndEarn() {
         <SectionHeading
           eyebrow="Earnings"
           title="What riders actually take home"
-          lead="Gross earnings from delivery platforms, minus your Zapp monthly rental. Figures are medians from our Delhi NCR and Bengaluru fleets over the last quarter."
+          lead="Gross earnings from delivery platforms, minus your SGD monthly rental. Figures are medians from our Delhi NCR and Bengaluru fleets over the last quarter."
         />
 
         <RevealGroup className="mt-14 grid items-start gap-6 lg:grid-cols-3">
@@ -147,7 +147,7 @@ export default function DeliverAndEarn() {
                     </div>
                     <div className="flex justify-between">
                       <span className={t.featured ? 'text-white/65' : 'text-neutral-500'}>
-                        Zapp rental
+                        SGD rental
                       </span>
                       <span className={cn('font-semibold', t.featured ? 'text-white' : 'text-ink-900')}>
                         −₹3,299
@@ -178,7 +178,7 @@ export default function DeliverAndEarn() {
       <StepList
         eyebrow="Getting started"
         title="Four steps, one day"
-        lead="Everything below happens in the Zapp Rider app. There is no office to visit and no agent to pay."
+        lead="Everything below happens in the SGD Rider app. There is no office to visit and no agent to pay."
         steps={HOW_IT_WORKS}
         tone="muted"
       />
@@ -245,7 +245,7 @@ export default function DeliverAndEarn() {
           'Weekly bonus and campaign progress',
         ]}
         image={IMG.urbanScooterRider}
-        imageAlt="Rider using the Zapp app"
+        imageAlt="Rider using the SGD app"
         stat={{ value: '4.6★', label: '84,000+ reviews' }}
         tone="muted"
         flip

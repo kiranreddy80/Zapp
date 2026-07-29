@@ -26,7 +26,7 @@ const STACK = [
   },
   {
     layer: 'Platform',
-    title: 'ZappOS',
+    title: 'SGD OS',
     body: 'The fleet system of record: vehicles, riders, hubs, leases, servicing, payouts and compliance in one model.',
     detail: '99.95% uptime · event-driven · REST + webhooks',
   },
@@ -39,7 +39,7 @@ const STACK = [
   {
     layer: 'Interface',
     title: 'Rider and client apps',
-    body: 'The Zapp Rider app, hub console and enterprise dashboard — all reading the same source of truth.',
+    body: 'The SGD Rider app, hub console and enterprise dashboard — all reading the same source of truth.',
     detail: '8 languages · offline-tolerant · 4.6★ rated',
   },
 ]
@@ -48,8 +48,8 @@ export default function Technology() {
   return (
     <>
       <Seo
-        title="Technology — ZappOS, Telematics and the Swap Network"
-        description="How Zapp Electric runs 24,000 vehicles: 4-second telematics, predictive maintenance trained on 900M km, swap-network orchestration and open APIs for enterprise clients."
+        title="Technology — SGD OS, Telematics and the Swap Network"
+        description="How SGD Electric runs 24,000 vehicles: 4-second telematics, predictive maintenance trained on 900M km, swap-network orchestration and open APIs for enterprise clients."
         image={IMG.analyticsScreen}
         path="/technology"
       />
@@ -57,7 +57,7 @@ export default function Technology() {
       <PageHero
         eyebrow="Technology"
         title="The unglamorous systems that make a fleet work"
-        lead="Twenty-four thousand vehicles, nine hundred swap stations and a million battery cells only stay reliable if something is watching all of them, all the time. That something is ZappOS."
+        lead="Twenty-four thousand vehicles, nine hundred swap stations and a million battery cells only stay reliable if something is watching all of them, all the time. That something is SGD OS."
         image={IMG.analyticsScreen}
         crumbs={[{ label: 'Company' }, { label: 'Technology' }]}
         stats={[

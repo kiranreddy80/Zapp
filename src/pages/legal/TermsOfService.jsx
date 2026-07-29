@@ -6,7 +6,7 @@ const SECTIONS = [
     id: 'agreement',
     title: 'Agreement to these terms',
     body: [
-      'These terms govern your use of the Zapp Electric website, the Zapp Rider app and any vehicle rented from Zapp Electric Mobility Pvt. Ltd. By creating an account or taking delivery of a vehicle, you agree to them.',
+      'These terms govern your use of the SGD Electric website, the SGD Rider app and any vehicle rented from SGD Electric Mobility Pvt. Ltd. By creating an account or taking delivery of a vehicle, you agree to them.',
       'Where you have signed a separate rental agreement, lease agreement or enterprise contract with us, that document governs the commercial relationship and these terms cover everything else. If the two conflict, the signed agreement takes precedence.',
     ],
   },
@@ -14,7 +14,7 @@ const SECTIONS = [
     id: 'eligibility',
     title: 'Eligibility',
     body: [
-      'To rent a vehicle from Zapp you must:',
+      'To rent a vehicle from SGD you must:',
       [
         'Be at least 18 years old and legally able to enter into a contract in India.',
         'Complete identity verification using a valid Aadhaar and PAN.',
@@ -29,7 +29,7 @@ const SECTIONS = [
     id: 'vehicle-use',
     title: 'Using the vehicle',
     body: [
-      'The vehicle remains the property of Zapp or its leasing partner at all times during a rental. You are responsible for it while it is in your custody.',
+      'The vehicle remains the property of SGD or its leasing partner at all times during a rental. You are responsible for it while it is in your custody.',
       'You agree that you will not:',
       [
         'Allow anyone other than yourself to ride the vehicle, unless we have approved it in writing.',
@@ -85,7 +85,7 @@ const SECTIONS = [
     id: 'intellectual-property',
     title: 'Intellectual property',
     body: [
-      'The Zapp name, logo, app, ZappOS platform, website content and documentation are owned by Zapp Electric Mobility Pvt. Ltd. or its licensors. You may not copy, reverse-engineer or redistribute them.',
+      'The SGD name, logo, app, SGD OS platform, website content and documentation are owned by SGD Electric Mobility Pvt. Ltd. or its licensors. You may not copy, reverse-engineer or redistribute them.',
       'You retain ownership of content you submit — reviews, support messages, photographs — and grant us a licence to use it for operating and improving the service.',
     ],
   },
@@ -112,11 +112,11 @@ export default function TermsOfService() {
     <LegalLayout
       title="Terms of Service"
       lead="The rules that govern renting a vehicle from us and using our apps — written in plain language, because terms nobody can read protect nobody."
-      description="Zapp Electric terms of service: eligibility, vehicle use, payments and deductions, maintenance, insurance, ending a rental and dispute resolution."
+      description="SGD Electric terms of service: eligibility, vehicle use, payments and deductions, maintenance, insurance, ending a rental and dispute resolution."
       path="/terms-of-service"
       image={IMG.mumbaiStreet}
       sections={SECTIONS}
-      contactEmail="legal@zappelectric.in"
+      contactEmail="legal@sgdelectric.in"
     />
   )
 }

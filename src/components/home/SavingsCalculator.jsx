@@ -10,7 +10,7 @@ import cn from '@/lib/cn'
 /* Assumptions, stated openly beneath the widget so the number is defensible. */
 const RATES = {
   petrol: { fuelPerKm: 2.7, servicePerMonth: 1400, insurancePerMonth: 560, emiPerMonth: 3100 },
-  zapp: { energyPerKm: 0.16, rentPerMonth: 3299 },
+  sgd: { energyPerKm: 0.16, rentPerMonth: 3299 },
   co2PerKm: 0.0489, // kg CO2e per km, petrol 110cc two-wheeler
 }
 
@@ -64,16 +64,16 @@ function Slider({ label, value, min, max, step, unit, onChange }) {
 /* ------------------------------------------------------------------ */
 
 function Receipt({ variant, title, subtitle, rows, total, note, km }) {
-  const isZapp = variant === 'zapp'
+  const isSGD = variant === 'sgd'
 
   return (
     // Vertical movement is owned by the parent's scroll parallax — this only
     // handles the fade and the paper tilt, so the two do not fight.
     <motion.div
-      initial={{ opacity: 0, rotate: isZapp ? 1.2 : -1.2 }}
-      whileInView={{ opacity: 1, rotate: isZapp ? 1.2 : -1.2 }}
+      initial={{ opacity: 0, rotate: isSGD ? 1.2 : -1.2 }}
+      whileInView={{ opacity: 1, rotate: isSGD ? 1.2 : -1.2 }}
       viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.8, delay: isZapp ? 0.12 : 0, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.8, delay: isSGD ? 0.12 : 0, ease: [0.22, 1, 0.36, 1] }}
       /* The tear mask clips box-shadow, so the lift has to come from a
          drop-shadow filter on the wrapper — it follows the masked silhouette. */
       className="relative [filter:drop-shadow(0_18px_30px_rgba(6,18,12,.16))]"
@@ -81,7 +81,7 @@ function Receipt({ variant, title, subtitle, rows, total, note, km }) {
       <div
         className={cn(
           'receipt-tear relative overflow-hidden pb-8 font-mono',
-          isZapp ? 'bg-white' : 'bg-[#F7F6F2]',
+          isSGD ? 'bg-white' : 'bg-[#F7F6F2]',
         )}
       >
         {/* paper grain */}
@@ -94,7 +94,7 @@ function Receipt({ variant, title, subtitle, rows, total, note, km }) {
               <p
                 className={cn(
                   'font-display text-[11px] font-bold uppercase tracking-[.22em]',
-                  isZapp ? 'text-brand-700' : 'text-neutral-600',
+                  isSGD ? 'text-brand-700' : 'text-neutral-600',
                 )}
               >
                 {subtitle}
@@ -107,10 +107,10 @@ function Receipt({ variant, title, subtitle, rows, total, note, km }) {
             <span
               className={cn(
                 'grid h-11 w-11 shrink-0 place-items-center rounded-full',
-                isZapp ? 'bg-brand-500 text-white' : 'bg-neutral-200 text-neutral-600',
+                isSGD ? 'bg-brand-500 text-white' : 'bg-neutral-200 text-neutral-600',
               )}
             >
-              <Icon name={isZapp ? 'Zap' : 'Fuel'} className="h-5 w-5" />
+              <Icon name={isSGD ? 'Zap' : 'Fuel'} className="h-5 w-5" />
             </span>
           </div>
 
@@ -152,7 +152,7 @@ function Receipt({ variant, title, subtitle, rows, total, note, km }) {
               transition={{ duration: 0.3 }}
               className={cn(
                 'font-display text-3xl font-extrabold tabular-nums tracking-tight',
-                isZapp ? 'text-brand-700' : 'text-neutral-600 line-through decoration-2',
+                isSGD ? 'text-brand-700' : 'text-neutral-600 line-through decoration-2',
               )}
             >
               {total}
@@ -166,11 +166,11 @@ function Receipt({ variant, title, subtitle, rows, total, note, km }) {
             aria-hidden="true"
             className={cn(
               'barcode mt-7 h-10 w-full',
-              isZapp ? 'text-brand-700/70' : 'text-neutral-600',
+              isSGD ? 'text-brand-700/70' : 'text-neutral-600',
             )}
           />
           <p className="mt-2 text-center text-[10px] tracking-[.3em] text-neutral-600">
-            {isZapp ? 'ZAPP-ELECTRIC-IN' : 'PETROL-110CC-IN'}
+            {isSGD ? 'SGD-ELECTRIC-IN' : 'PETROL-110CC-IN'}
           </p>
         </div>
       </div>
@@ -188,7 +188,7 @@ export default function SavingsCalculator() {
   const reduced = useReducedMotion()
 
   /* The two statements drift past each other as the section scrolls — petrol
-     rising, Zapp falling — with the savings seal held between them. */
+     rising, SGD falling — with the savings seal held between them. */
   const billsRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: billsRef,
@@ -196,14 +196,14 @@ export default function SavingsCalculator() {
   })
   const smooth = useSpring(scrollYProgress, { stiffness: 80, damping: 28, restDelta: 0.001 })
   const petrolY = useTransform(smooth, [0, 1], [70, -70])
-  const zappY = useTransform(smooth, [0, 1], [-70, 70])
+  const sgdY = useTransform(smooth, [0, 1], [-70, 70])
   const sealRotate = useTransform(smooth, [0, 1], [-16, -2])
   const sealScale = useTransform(smooth, [0, 0.5, 1], [0.92, 1, 0.92])
 
   const r = useMemo(() => {
     const km = kmPerDay * daysPerMonth
     const p = RATES.petrol
-    const z = RATES.zapp
+    const z = RATES.sgd
 
     const petrolRows = [
       { label: 'Fuel', value: inr(km * p.fuelPerKm) },
@@ -213,22 +213,22 @@ export default function SavingsCalculator() {
     ]
     const petrolTotal = km * p.fuelPerKm + p.servicePerMonth + p.insurancePerMonth + p.emiPerMonth
 
-    const zappRows = [
+    const sgdRows = [
       { label: 'Charging', value: inr(km * z.energyPerKm) },
       { label: 'Servicing', value: 'Included', free: true },
       { label: 'Insurance', value: 'Included', free: true },
       { label: 'Monthly rental', value: inr(z.rentPerMonth) },
     ]
-    const zappTotal = km * z.energyPerKm + z.rentPerMonth
+    const sgdTotal = km * z.energyPerKm + z.rentPerMonth
 
     return {
       km,
       petrolRows,
-      zappRows,
+      sgdRows,
       petrolTotal,
-      zappTotal,
-      saving: petrolTotal - zappTotal,
-      yearly: (petrolTotal - zappTotal) * 12,
+      sgdTotal,
+      saving: petrolTotal - sgdTotal,
+      yearly: (petrolTotal - sgdTotal) * 12,
       co2: km * RATES.co2PerKm * 12,
     }
   }, [kmPerDay, daysPerMonth])
@@ -245,7 +245,7 @@ export default function SavingsCalculator() {
       />
 
       <SectionHeading
-        eyebrow="Why choose Zapp"
+        eyebrow="Why choose SGD"
         title="Everything included. Nothing hidden."
         lead="One rental covers the vehicle, the energy, the servicing and the insurance. Here is what that buys you — and below, exactly what it saves you."
       />
@@ -265,7 +265,7 @@ export default function SavingsCalculator() {
           </h3>
           <p className="mt-4 text-[16.5px] leading-relaxed text-neutral-600">
             Set the sliders to how you actually ride. Both statements recalculate live — one is what
-            a petrol two-wheeler costs you, the other is what Zapp costs.
+            a petrol two-wheeler costs you, the other is what SGD costs.
           </p>
         </div>
       </Reveal>
@@ -357,15 +357,15 @@ export default function SavingsCalculator() {
             </motion.div>
           </motion.div>
 
-          {/* zapp — drifts downward */}
-          <motion.div style={reduced ? undefined : { y: zappY }}>
+          {/* sgd — drifts downward */}
+          <motion.div style={reduced ? undefined : { y: sgdY }}>
             <Receipt
-              variant="zapp"
+              variant="sgd"
               subtitle="What you would pay"
-              title="Zapp Electric"
+              title="SGD Electric"
               km={r.km}
-              rows={r.zappRows}
-              total={inr(r.zappTotal)}
+              rows={r.sgdRows}
+              total={inr(r.sgdTotal)}
               note="Charging at ₹0.16/km. Servicing, insurance and unlimited battery swaps are in the rental."
             />
           </motion.div>
@@ -394,7 +394,7 @@ export default function SavingsCalculator() {
       <Reveal delay={0.25}>
         <p className="mx-auto mt-12 max-w-3xl text-center text-xs leading-relaxed text-neutral-600">
           Petrol baseline assumes ₹2.70/km fuel at 38 km/l, ₹1,400 monthly servicing, ₹560 insurance
-          and a ₹3,100 EMI. Zapp assumes ₹0.16/km energy and a ₹3,299 monthly rental with servicing
+          and a ₹3,100 EMI. SGD assumes ₹0.16/km energy and a ₹3,299 monthly rental with servicing
           and insurance included. Emissions factor 0.0489 kg CO₂e/km. Your actual figures will vary
           by city, model and riding style.
         </p>

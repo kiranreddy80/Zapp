@@ -11,24 +11,24 @@
 export const LOGO_SRC = null
 
 export const SITE = {
-  name: 'Zapp Electric',
-  shortName: 'Zapp',
+  name: 'SGD Electric',
+  shortName: 'SGD',
   tagline: 'Charge Less. Earn More.',
   description:
     "India's electric fleet for last-mile delivery. Rent a scooter or cargo loader with zero fuel bills, zero maintenance and zero emissions.",
-  legalName: 'Zapp Electric Mobility Pvt. Ltd.',
+  legalName: 'SGD Electric Mobility Pvt. Ltd.',
   founded: 2019,
 }
 
 export const CONTACT = {
   phone: '+91 98100 44 220',
   phoneHref: 'tel:+919810044220',
-  supportEmail: 'help@zappelectric.in',
-  salesEmail: 'partners@zappelectric.in',
-  pressEmail: 'press@zappelectric.in',
-  careersEmail: 'careers@zappelectric.in',
+  supportEmail: 'help@sgdelectric.in',
+  salesEmail: 'partners@sgdelectric.in',
+  pressEmail: 'press@sgdelectric.in',
+  careersEmail: 'careers@sgdelectric.in',
   hq: {
-    line1: 'Zapp Electric Mobility Pvt. Ltd.',
+    line1: 'SGD Electric Mobility Pvt. Ltd.',
     line2: 'Tower B, Cyber Greens, DLF Phase 3',
     city: 'Gurugram, Haryana 122002',
     country: 'India',
@@ -158,12 +158,12 @@ export const NAV = [
     label: 'Partner',
     columns: [
       {
-        title: 'Grow with Zapp',
+        title: 'Grow with SGD',
         items: [
           {
             label: 'Franchise',
             to: '/franchise',
-            desc: 'Run a Zapp hub in your city',
+            desc: 'Run a SGD hub in your city',
             icon: 'Store',
           },
           {
@@ -190,7 +190,7 @@ export const NAV = [
         items: [
           { label: 'Who We Are', to: '/about', desc: 'Our story and team', icon: 'Users' },
           {
-            label: 'Life at Zapp',
+            label: 'Life at SGD',
             to: '/about#life',
             desc: 'Culture, hubs and the people',
             icon: 'HeartHandshake',
@@ -198,7 +198,7 @@ export const NAV = [
           {
             label: 'Technology',
             to: '/technology',
-            desc: 'ZappOS, telematics and swap network',
+            desc: 'SGD OS, telematics and swap network',
             icon: 'Cpu',
           },
           { label: 'ESG', to: '/esg', desc: 'Governance and social impact', icon: 'ShieldCheck' },
@@ -248,7 +248,7 @@ export const FOOTER_NAV = [
     links: [
       { label: 'Who We Are', to: '/about' },
       { label: 'Our Journey', to: '/about#journey' },
-      { label: 'Life at Zapp', to: '/about#life' },
+      { label: 'Life at SGD', to: '/about#life' },
       { label: 'Technology', to: '/technology' },
       { label: 'ESG', to: '/esg' },
       { label: 'Environment', to: '/environment' },

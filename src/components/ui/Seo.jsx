@@ -8,7 +8,7 @@ import { SITE } from '@/data/site'
 export default function Seo({ title, description, image, path }) {
   const fullTitle = title ? `${title} — ${SITE.name}` : `${SITE.name} — ${SITE.tagline}`
   const desc = description ?? SITE.description
-  const url = path ? `https://zappelectric.in${path}` : 'https://zappelectric.in'
+  const url = path ? `https://sgdelectric.in${path}` : 'https://sgdelectric.in'
 
   return (
     <Helmet>

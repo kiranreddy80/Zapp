@@ -3,7 +3,7 @@ import { RevealGroup, RevealItem } from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
 import Img from '@/components/ui/Img'
 import Tilt from '@/components/ui/Tilt'
-import { WHY_ZAPP } from '@/data/content'
+import { WHY_SGD } from '@/data/content'
 import { IMG } from '@/data/media'
 
 /**
@@ -11,7 +11,7 @@ import { IMG } from '@/data/media'
  * grid reads as an editorial spread rather than six identical boxes.
  */
 export default function WhyGrid() {
-  const [lead, ...rest] = WHY_ZAPP
+  const [lead, ...rest] = WHY_SGD
 
   return (
     <Section id="why" tone="muted">

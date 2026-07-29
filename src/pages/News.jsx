@@ -25,7 +25,7 @@ export default function News() {
     <>
       <Seo
         title="Newsroom"
-        description="Press coverage, funding announcements, milestones and awards from Zapp Electric — India's EV fleet for last-mile delivery."
+        description="Press coverage, funding announcements, milestones and awards from SGD Electric — India's EV fleet for last-mile delivery."
         image={IMG.riderCityDay}
         path="/news"
       />

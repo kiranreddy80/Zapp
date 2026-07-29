@@ -19,7 +19,7 @@ export default function Home() {
     <>
       <Seo
         title="EV Rentals for Last-Mile Delivery"
-        description="Rent an electric scooter or 3-wheeler cargo loader with Zapp Electric. Insurance, servicing and unlimited battery swaps included. Live in 12 Indian cities."
+        description="Rent an electric scooter or 3-wheeler cargo loader with SGD Electric. Insurance, servicing and unlimited battery swaps included. Live in 12 Indian cities."
         image={IMG.riderScooter}
         path="/"
       />

@@ -12,7 +12,7 @@ const SECTIONS = [
   { id: 'hero', label: 'Rent an EV' },
   { id: 'mission', label: 'Mission & vision' },
   { id: 'journey', label: 'Our journey' },
-  { id: 'savings', label: 'Why choose Zapp' },
+  { id: 'savings', label: 'Why choose SGD' },
   { id: 'get-started', label: 'Get started' },
   { id: 'impact', label: 'Impact' },
   { id: 'stories', label: 'Rider stories' },

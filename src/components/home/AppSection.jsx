@@ -33,7 +33,7 @@ export default function AppSection() {
               <div className="relative aspect-[9/19.5] overflow-hidden rounded-[2rem] bg-ink-900">
                 <Img
                   src={IMG.urbanScooterRider}
-                  alt="Zapp Rider app"
+                  alt="SGD Rider app"
                   wrapperClassName="absolute inset-0"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-ink-950/40 via-transparent to-ink-950" />
@@ -70,7 +70,7 @@ export default function AppSection() {
           <Reveal>
             <span className="eyebrow-dark">
               <Icon name="Smartphone" className="h-3.5 w-3.5" />
-              Zapp Rider app
+              SGD Rider app
             </span>
           </Reveal>
 

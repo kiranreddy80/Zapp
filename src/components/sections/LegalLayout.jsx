@@ -127,7 +127,7 @@ export default function LegalLayout({ title, lead, description, path, image, sec
       </Section>
 
       <CTABand
-        eyebrow="Zapp Electric"
+        eyebrow="SGD Electric"
         title="Ready when you are"
         lead="Rentals, cargo fleets and franchise partnerships — all start with a conversation."
         primary={{ label: 'Get in touch', to: '/contact' }}

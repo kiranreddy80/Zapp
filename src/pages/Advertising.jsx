@@ -24,7 +24,7 @@ const WHY = [
   {
     icon: 'Route',
     title: 'It moves where your buyers are',
-    body: 'A billboard waits for an audience. A Zapp rider covers 95 km a day through the residential and commercial corridors where your customers actually live and shop.',
+    body: 'A billboard waits for an audience. A SGD rider covers 95 km a day through the residential and commercial corridors where your customers actually live and shop.',
   },
   {
     icon: 'Target',
@@ -71,7 +71,7 @@ export default function Advertising() {
     <>
       <Seo
         title="Advertise on India's Largest EV Delivery Fleet"
-        description="Reach 41 million daily impressions with vehicle wraps, delivery box branding and in-app placements across 24,000 Zapp riders in 12 Indian cities. From ₹0.09 CPM."
+        description="Reach 41 million daily impressions with vehicle wraps, delivery box branding and in-app placements across 24,000 SGD riders in 12 Indian cities. From ₹0.09 CPM."
         image={IMG.roadsideBanner}
         path="/advertising"
       />
@@ -147,7 +147,7 @@ export default function Advertising() {
         tone="deep"
         eyebrow="In-app inventory"
         title="A hard audience to reach, in one place"
-        body="Twenty-four thousand gig-economy riders open the Zapp app several times a day. For finance, insurance, telecom and FMCG brands, that is an audience conventional digital targeting struggles to isolate."
+        body="Twenty-four thousand gig-economy riders open the SGD app several times a day. For finance, insurance, telecom and FMCG brands, that is an audience conventional digital targeting struggles to isolate."
         points={[
           { title: '61% daily active', body: 'Riders open the app to swap, check earnings and book services.' },
           { title: 'Verified identities', body: 'Every user is KYC-verified, so the audience is real and de-duplicated.' },

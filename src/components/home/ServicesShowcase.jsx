@@ -46,7 +46,7 @@ const SERVICES = [
     to: '/franchise',
     kicker: 'Partnership',
     title: 'Franchise a Hub',
-    body: 'Run a Zapp hub in your city with vehicles, software and rider supply provided.',
+    body: 'Run a SGD hub in your city with vehicles, software and rider supply provided.',
     image: IMG.garageBikes,
     highlights: ['14–20 mo payback'],
     span: 'lg:col-span-2',
@@ -59,7 +59,7 @@ export default function ServicesShowcase() {
       <SectionHeading
         eyebrow="What we do"
         title="One fleet, five ways to use it"
-        lead="Whether you ride for a living, move freight, or want to run the hub itself — there is a Zapp product shaped for it."
+        lead="Whether you ride for a living, move freight, or want to run the hub itself — there is a SGD product shaped for it."
       />
 
       <RevealGroup className="mt-14 grid gap-5 lg:grid-cols-6">

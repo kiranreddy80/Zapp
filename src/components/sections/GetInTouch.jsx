@@ -106,7 +106,7 @@ export default function GetInTouch() {
 
             <iframe
               key={hub.city}
-              title={`Zapp Electric hub in ${hub.city}`}
+              title={`SGD Electric hub in ${hub.city}`}
               src={embed}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
@@ -118,7 +118,7 @@ export default function GetInTouch() {
               <div>
                 <p className="flex items-center gap-2 text-[14px] font-semibold text-ink-900">
                   <Icon name="MapPin" className="h-4 w-4 text-brand-700" />
-                  Zapp Electric hub · {hub.city}
+                  SGD Electric hub · {hub.city}
                 </p>
                 <p className="mt-0.5 pl-6 text-[13px] text-neutral-500">
                   Mon–Sat, 8:00 AM – 9:00 PM

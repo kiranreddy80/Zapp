@@ -18,7 +18,7 @@ export default function Footer() {
       >
         <Marquee speed="slow" fade={false} pauseOnHover={false}>
           <span className="whitespace-nowrap px-8 font-display text-[13rem] font-extrabold leading-none tracking-tighter">
-            ZAPP ELECTRIC · CHARGE LESS EARN MORE ·
+            SGD ELECTRIC · CHARGE LESS EARN MORE ·
           </span>
         </Marquee>
       </div>

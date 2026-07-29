@@ -13,7 +13,7 @@ const COMMITMENTS = [
   {
     target: 'FY 2026-27',
     title: 'Net-zero operations',
-    body: 'All Zapp-operated hubs powered by contracted renewable supply, with residual emissions eliminated rather than offset.',
+    body: 'All SGD-operated hubs powered by contracted renewable supply, with residual emissions eliminated rather than offset.',
     progress: 61,
   },
   {
@@ -50,7 +50,7 @@ export default function Esg() {
     <>
       <Seo
         title="ESG — Environment, Social and Governance"
-        description="Zapp Electric's ESG commitments: 68M kg CO₂ avoided, 24,000 livelihoods supported, 94% battery circularity, and independent governance over rider welfare."
+        description="SGD Electric's ESG commitments: 68M kg CO₂ avoided, 24,000 livelihoods supported, 94% battery circularity, and independent governance over rider welfare."
         image={IMG.forestSun}
         path="/esg"
       />
@@ -161,7 +161,7 @@ export default function Esg() {
           { title: 'Independent grievance route', body: 'An ombudsperson who reports to the board, not to operations.' },
         ]}
         image={IMG.portraitWoman1}
-        imageAlt="Zapp rider"
+        imageAlt="SGD rider"
         stat={{ value: '97.2%', label: 'grievances closed in SLA' }}
         tone="light"
         flip
@@ -200,7 +200,7 @@ export default function Esg() {
             <h3 className="mt-6 text-xl">How we measure</h3>
             <div className="mt-4 space-y-4 text-[15px] leading-relaxed text-neutral-600">
               <p className="dropcap">
-                Avoided emissions are calculated per kilometre travelled on a metered Zapp vehicle,
+                Avoided emissions are calculated per kilometre travelled on a metered SGD vehicle,
                 against a petrol two-wheeler baseline of 0.0489 kg CO₂e per kilometre. That baseline
                 is reviewed annually by an independent assessor and adjusted for the Indian fleet mix.
               </p>

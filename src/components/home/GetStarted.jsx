@@ -177,7 +177,7 @@ function Screen({ kind }) {
         </svg>
       </span>
       <div>
-        <p className="font-display text-sm font-extrabold text-ink-900">Zapp Rider</p>
+        <p className="font-display text-sm font-extrabold text-ink-900">SGD Rider</p>
         <p className="mt-1 text-[10px] text-neutral-500">Charge less. Earn more.</p>
       </div>
       <span className="rounded-full bg-brand-500 px-5 py-2 text-[11px] font-bold text-white">

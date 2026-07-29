@@ -47,7 +47,7 @@ const INCLUDED = [
 
 const ELIGIBILITY = [
   'Aadhaar and PAN, verified in the app',
-  'Six months of delivery experience on any platform, or completion of Zapp rider training',
+  'Six months of delivery experience on any platform, or completion of SGD rider training',
   'An active account on at least one delivery platform',
   'A bank account in your own name for auto-debit',
   'Age between 18 and 58 years',
@@ -137,7 +137,7 @@ export default function RentToOwn() {
             { label: 'Insurance for 24 months', value: 'Included', note: 'comprehensive + ₹5L accident cover' },
             { label: 'Servicing and spares', value: 'Included', note: 'for the entire term' },
             { label: 'Unlimited battery swaps', value: 'Included', note: 'at all 900+ points' },
-            { label: 'RC transfer and paperwork', value: 'Included', note: 'handled by Zapp at month 24' },
+            { label: 'RC transfer and paperwork', value: 'Included', note: 'handled by SGD at month 24' },
           ].map((row) => (
             <RevealItem
               key={row.label}
@@ -161,7 +161,7 @@ export default function RentToOwn() {
 
         <Reveal delay={0.2}>
           <p className="mx-auto mt-8 max-w-2xl text-center text-xs leading-relaxed text-white/55">
-            Figures are for the Zapp City 25 in Delhi NCR. Other models and cities vary; your exact
+            Figures are for the SGD City 25 in Delhi NCR. Other models and cities vary; your exact
             schedule is shown in the app before you confirm anything. GST included.
           </p>
         </Reveal>
@@ -215,18 +215,18 @@ export default function RentToOwn() {
 
               <div className="mt-6 space-y-4">
                 {[
-                  { label: 'Credit score requirement', bank: 'CIBIL 700+', zapp: 'None' },
-                  { label: 'Guarantor', bank: 'Usually required', zapp: 'Not required' },
-                  { label: 'Down payment', bank: '15–25%', zapp: '₹9,999' },
-                  { label: 'Insurance and servicing', bank: 'Your cost', zapp: 'Included' },
-                  { label: 'Missed payment consequence', bank: 'Reported to bureau', zapp: 'Reverts to rental' },
+                  { label: 'Credit score requirement', bank: 'CIBIL 700+', sgd: 'None' },
+                  { label: 'Guarantor', bank: 'Usually required', sgd: 'Not required' },
+                  { label: 'Down payment', bank: '15–25%', sgd: '₹9,999' },
+                  { label: 'Insurance and servicing', bank: 'Your cost', sgd: 'Included' },
+                  { label: 'Missed payment consequence', bank: 'Reported to bureau', sgd: 'Reverts to rental' },
                 ].map((r) => (
                   <div key={r.label} className="border-t border-neutral-100 pt-4">
                     <p className="text-[13px] font-medium text-neutral-500">{r.label}</p>
                     <div className="mt-1.5 flex items-center justify-between gap-4">
                       <span className="text-[14.5px] text-neutral-500 line-through">{r.bank}</span>
                       <span className="font-display text-[15px] font-bold text-brand-700">
-                        {r.zapp}
+                        {r.sgd}
                       </span>
                     </div>
                   </div>
@@ -248,7 +248,7 @@ export default function RentToOwn() {
           { title: '91% completion rate', body: 'Of plans that reached their scheduled end date.' },
         ]}
         image={IMG.portraitMan1}
-        imageAlt="Zapp rider"
+        imageAlt="SGD rider"
         stat={{ value: '2,100', label: 'vehicles now rider-owned' }}
         flip
       />

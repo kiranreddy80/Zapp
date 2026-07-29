@@ -47,19 +47,19 @@ const INCLUDED = [
 const MODELS = [
   {
     icon: 'Bike',
-    title: 'Zapp City 25',
+    title: 'SGD City 25',
     body: 'Low-speed, licence-free and the easiest model to start on. Capped at 25 km/h, ideal for dense neighbourhood routes.',
     points: ['No licence or RC needed', '95 km certified range', 'Best for food delivery'],
   },
   {
     icon: 'Zap',
-    title: 'Zapp Sprint 65',
+    title: 'SGD Sprint 65',
     body: 'Our high-speed model for riders covering longer distances and the stretches between delivery zones.',
     points: ['65 km/h top speed', '130 km certified range', 'Valid licence required'],
   },
   {
     icon: 'Package',
-    title: 'Zapp Haul',
+    title: 'SGD Haul',
     body: 'Reinforced rear frame and a 90-litre box for grocery and quick-commerce runs with bulkier baskets.',
     points: ['90 L cargo box', '150 kg payload', 'Reinforced suspension'],
   },
@@ -110,7 +110,7 @@ export default function ScooterRental() {
         lead="Commercial-grade motors, LFP battery chemistry and a frame rated for continuous delivery duty."
         specs={SPECS_2W}
         image={IMG.evCharging}
-        imageAlt="Zapp electric scooter charging"
+        imageAlt="SGD electric scooter charging"
         note="Figures are certified test values. Real-world range varies with load, terrain, traffic and riding style — most riders see 15–20% below certified range in dense city conditions."
       />
 
@@ -137,7 +137,7 @@ export default function ScooterRental() {
         tone="deep"
         eyebrow="Swap, do not wait"
         title="A charge that takes ninety seconds"
-        body="Charging is the reason most riders reject electric, so we removed it. Ride into any Zapp point, trade your pack for a charged one and go — no plugging in, no waiting, no planning your day around a socket."
+        body="Charging is the reason most riders reject electric, so we removed it. Ride into any SGD point, trade your pack for a charged one and go — no plugging in, no waiting, no planning your day around a socket."
         points={[
           {
             title: '900+ swap points',

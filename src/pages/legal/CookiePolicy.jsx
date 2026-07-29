@@ -19,7 +19,7 @@ const SECTIONS = [
         'Strictly necessary — session management, security tokens and load balancing. These cannot be switched off because the site does not function without them.',
         'Preference — remembering your selected city, language and whether you have dismissed a notice. Set only after you accept.',
         'Analytics — aggregated, de-identified measurement of which pages are used and where people abandon a form. We use this to fix the site, not to profile you.',
-        'Marketing — used to measure whether a campaign brought someone to the site. Set only with your explicit consent, and never on the Zapp Rider app.',
+        'Marketing — used to measure whether a campaign brought someone to the site. Set only with your explicit consent, and never on the SGD Rider app.',
       ],
       'We do not use cookies to track riders across other websites, and we do not sell any data collected through cookies.',
     ],
@@ -68,11 +68,11 @@ export default function CookiePolicy() {
     <LegalLayout
       title="Cookie Policy"
       lead="The four kinds of cookie this site uses, how long each lasts, and how to turn off everything that is not strictly necessary."
-      description="Zapp Electric cookie policy: the categories of cookies we set, third-party embeds, retention periods and how to manage your consent."
+      description="SGD Electric cookie policy: the categories of cookies we set, third-party embeds, retention periods and how to manage your consent."
       path="/cookie-policy"
       image={IMG.forestSun}
       sections={SECTIONS}
-      contactEmail="privacy@zappelectric.in"
+      contactEmail="privacy@sgdelectric.in"
     />
   )
 }

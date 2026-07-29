@@ -49,7 +49,7 @@ export default function EvForDelivery() {
     <>
       <Seo
         title="Managed EV Delivery Fleets for Business"
-        description="SLA-backed managed rider fleets for quick commerce, food delivery and e-commerce. Riders recruited, trained and managed by Zapp, with live telemetry and Scope 3 reporting."
+        description="SLA-backed managed rider fleets for quick commerce, food delivery and e-commerce. Riders recruited, trained and managed by SGD, with live telemetry and Scope 3 reporting."
         image={IMG.warehouseVan}
         path="/ev-for-delivery"
       />
@@ -135,7 +135,7 @@ export default function EvForDelivery() {
       <SplitFeature
         eyebrow="Rider quality"
         title="The rider is the product"
-        body="A delivery is only as good as the person making it. Every Zapp rider is background-verified, trained on your platform's flow, and covered by insurance before their first shift."
+        body="A delivery is only as good as the person making it. Every SGD rider is background-verified, trained on your platform's flow, and covered by insurance before their first shift."
         points={[
           {
             title: 'Police and address verification',

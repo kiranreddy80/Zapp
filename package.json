@@ -1,9 +1,9 @@
 {
-  "name": "zapp-electric",
+  "name": "sgd-electric",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Zapp Electric — EV rental platform for last-mile delivery. Frontend.",
+  "description": "SGD Electric — EV rental platform for last-mile delivery. Frontend.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

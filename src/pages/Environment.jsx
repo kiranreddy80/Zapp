@@ -47,7 +47,7 @@ export default function Environment() {
     <>
       <Seo
         title="Environmental Impact"
-        description="68 million kg of CO₂ avoided, 28 million litres of petrol not burned, 94% battery circularity. Zapp Electric's measured environmental impact and methodology."
+        description="68 million kg of CO₂ avoided, 28 million litres of petrol not burned, 94% battery circularity. SGD Electric's measured environmental impact and methodology."
         image={IMG.forestTop}
         path="/environment"
       />
@@ -147,7 +147,7 @@ export default function Environment() {
 
         <Reveal delay={0.2}>
           <p className="mx-auto mt-8 max-w-2xl text-center text-xs leading-relaxed text-neutral-500">
-            Tailpipe emissions avoided, calculated from metered Zapp distance against Bharat Stage VI
+            Tailpipe emissions avoided, calculated from metered SGD distance against Bharat Stage VI
             petrol two-wheeler emission factors. Upstream electricity generation emissions are
             reported separately in our annual impact report and are not netted off these figures.
           </p>
@@ -158,11 +158,11 @@ export default function Environment() {
         tone="deep"
         eyebrow="Energy"
         title="An electric fleet on a coal grid is still a compromise"
-        body="India's grid is roughly half thermal, so a Zapp scooter is not zero-emission end to end — it is about 71% cleaner than petrol on current grid mix. The honest answer is to fix the electricity, not to stop counting it."
+        body="India's grid is roughly half thermal, so a SGD scooter is not zero-emission end to end — it is about 71% cleaner than petrol on current grid mix. The honest answer is to fix the electricity, not to stop counting it."
         points={[
           { title: '61% renewable-powered hubs', body: 'Through contracted supply and rooftop solar, up from 34% in 2024.' },
           { title: 'Off-peak charging', body: 'Swap cabinets charge in windows with the cleanest available grid mix.' },
-          { title: 'FY 2026-27 target', body: 'Every Zapp-operated hub on contracted renewable supply.' },
+          { title: 'FY 2026-27 target', body: 'Every SGD-operated hub on contracted renewable supply.' },
         ]}
         image={IMG.forestRiver}
         imageAlt="Aerial view of forest and river"

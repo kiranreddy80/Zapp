@@ -212,7 +212,7 @@ function ContactForm() {
                   className="mt-1 h-4 w-4 rounded border-neutral-300 text-brand-700 focus:ring-brand-500"
                 />
                 <span className="text-[13.5px] leading-relaxed text-neutral-500">
-                  I agree that Zapp Electric may contact me about this enquiry, and I have read the{' '}
+                  I agree that SGD Electric may contact me about this enquiry, and I have read the{' '}
                   <a href="/privacy-policy" className="font-medium text-brand-700 underline">
                     privacy policy
                   </a>
@@ -255,7 +255,7 @@ export default function Contact() {
     <>
       <Seo
         title="Contact Us"
-        description="Get in touch with Zapp Electric. Rider support, enterprise fleet enquiries, franchise applications and press. Gurugram HQ, live in 12 Indian cities."
+        description="Get in touch with SGD Electric. Rider support, enterprise fleet enquiries, franchise applications and press. Gurugram HQ, live in 12 Indian cities."
         image={IMG.teamDiscussion}
         path="/contact"
       />

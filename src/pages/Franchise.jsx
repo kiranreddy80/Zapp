@@ -27,7 +27,7 @@ const SUPPORT = [
   },
   {
     icon: 'Cpu',
-    title: 'ZappOS licence included',
+    title: 'SGD OS licence included',
     body: 'Fleet tracking, battery health, rider attendance, billing and payout reconciliation — the same software our own hubs run on.',
   },
   {
@@ -101,8 +101,8 @@ export default function Franchise() {
   return (
     <>
       <Seo
-        title="Franchise Opportunity — Run a Zapp Hub"
-        description="Own and operate a Zapp Electric hub. Vehicles leased, riders sourced, software and training included. Investment from ₹6 lakh with 14–20 month payback."
+        title="Franchise Opportunity — Run a SGD Hub"
+        description="Own and operate a SGD Electric hub. Vehicles leased, riders sourced, software and training included. Investment from ₹6 lakh with 14–20 month payback."
         image={IMG.garageBikes}
         path="/franchise"
       />
@@ -289,7 +289,7 @@ export default function Franchise() {
           { title: 'Month 17', body: 'Recovered the full investment; second site approved.' },
         ]}
         image={IMG.mechanicsChecking}
-        imageAlt="Franchise partner at a Zapp hub"
+        imageAlt="Franchise partner at a SGD hub"
         stat={{ value: '17 mo', label: 'to full payback' }}
         tone="light"
         flip

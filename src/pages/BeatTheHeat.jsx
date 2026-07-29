@@ -22,7 +22,7 @@ export default function BeatTheHeat() {
     <>
       <Seo
         title="Beat The Heat — Rider Rewards Campaign"
-        description="Complete 100 orders a week between April and May and win up to ₹50,000 plus a three-month free lease. Over ₹40 lakh in total rewards for Zapp riders."
+        description="Complete 100 orders a week between April and May and win up to ₹50,000 plus a three-month free lease. Over ₹40 lakh in total rewards for SGD riders."
         image={IMG.courierStreet}
         path="/beat-the-heat"
       />
@@ -57,7 +57,7 @@ export default function BeatTheHeat() {
               align="left"
               eyebrow="How to take part"
               title="Four rules, no fine print"
-              lead="If you are already riding on a Zapp plan, you are already halfway in."
+              lead="If you are already riding on a SGD plan, you are already halfway in."
             />
             <Reveal delay={0.2}>
               <div className="mt-9">
@@ -90,7 +90,7 @@ export default function BeatTheHeat() {
           dark
           eyebrow="The prize ladder"
           title="Over ₹40 lakh going back to riders"
-          lead="Winners are drawn from the live leaderboard in the Zapp Rider app. Rankings update every night."
+          lead="Winners are drawn from the live leaderboard in the SGD Rider app. Rankings update every night."
         />
 
         <RevealGroup className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -155,8 +155,8 @@ export default function BeatTheHeat() {
 
         <Reveal delay={0.2}>
           <p className="mx-auto mt-9 max-w-2xl text-center text-xs leading-relaxed text-white/55">
-            Orders must be marked delivered on a partner platform and completed on a Zapp vehicle to
-            count. Full terms are published in the app. Zapp employees and their immediate families
+            Orders must be marked delivered on a partner platform and completed on a SGD vehicle to
+            count. Full terms are published in the app. SGD employees and their immediate families
             are not eligible.
           </p>
         </Reveal>
@@ -263,7 +263,7 @@ export default function BeatTheHeat() {
       <CTABand
         eyebrow="Beat The Heat"
         title="The leaderboard resets every Monday"
-        lead="Every week is a fresh chance at a prize. Get on a Zapp plan and your orders start counting immediately."
+        lead="Every week is a fresh chance at a prize. Get on a SGD plan and your orders start counting immediately."
         primary={{ label: 'Join the campaign', to: '/contact' }}
         secondary={{ label: 'Become a rider', to: '/deliver-and-earn' }}
         points={['100 orders a week to qualify', 'Weekly winners announced Monday', 'Free hydration kits at every hub']}

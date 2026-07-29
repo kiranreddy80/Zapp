@@ -38,7 +38,7 @@ const LEASE_FEATURES = [
   {
     icon: 'Wrench',
     title: 'Maintenance is ours',
-    body: 'Servicing, insurance, battery replacement and rider management are Zapp obligations. Your exposure is the asset, not the operation.',
+    body: 'Servicing, insurance, battery replacement and rider management are SGD obligations. Your exposure is the asset, not the operation.',
   },
   {
     icon: 'Recycle',
@@ -89,7 +89,7 @@ const FAQ_IR = [
   },
   {
     q: 'How is utilisation risk shared?',
-    a: 'Lease rentals are contracted, not variable, so day-to-day utilisation risk sits with Zapp rather than with you. Our exposure is that a poorly utilised fleet still owes you rent — which is precisely the incentive alignment we want.',
+    a: 'Lease rentals are contracted, not variable, so day-to-day utilisation risk sits with SGD rather than with you. Our exposure is that a poorly utilised fleet still owes you rent — which is precisely the incentive alignment we want.',
   },
   {
     q: 'Is this a regulated financial product?',

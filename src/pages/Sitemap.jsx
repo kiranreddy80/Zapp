@@ -24,7 +24,7 @@ export default function Sitemap() {
     <>
       <Seo
         title="Sitemap"
-        description="Every page on the Zapp Electric website, grouped by section."
+        description="Every page on the SGD Electric website, grouped by section."
         path="/sitemap"
       />
 

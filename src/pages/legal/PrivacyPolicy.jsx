@@ -6,7 +6,7 @@ const SECTIONS = [
     id: 'introduction',
     title: 'Introduction',
     body: [
-      'Zapp Electric Mobility Pvt. Ltd. ("Zapp", "we", "us") operates the Zapp Rider app, the Zapp fleet dashboard and this website. This policy explains what personal data we collect, why we collect it, how long we keep it and what rights you have over it.',
+      'SGD Electric Mobility Pvt. Ltd. ("SGD", "we", "us") operates the SGD Rider app, the SGD fleet dashboard and this website. This policy explains what personal data we collect, why we collect it, how long we keep it and what rights you have over it.',
       'We process personal data in accordance with the Digital Personal Data Protection Act, 2023 and applicable Indian law. Where we act as a data fiduciary, the obligations in this policy are ours. Where we process data on behalf of an enterprise client, that client is the fiduciary and their policy also applies.',
     ],
   },
@@ -80,7 +80,7 @@ const SECTIONS = [
     title: 'Your rights',
     body: [
       'Under the DPDP Act you have the right to access a summary of the personal data we hold about you, to have inaccurate data corrected, to have data erased where we no longer have a lawful basis to keep it, to nominate someone to exercise these rights if you are unable to, and to raise a grievance.',
-      'You can exercise the first three directly in the Zapp Rider app under Profile → Data & Privacy. Requests submitted in the app are actioned within seven working days.',
+      'You can exercise the first three directly in the SGD Rider app under Profile → Data & Privacy. Requests submitted in the app are actioned within seven working days.',
       'If you are unsatisfied with our response, you may escalate to our Data Protection Officer, and thereafter to the Data Protection Board of India.',
     ],
   },
@@ -97,7 +97,7 @@ const SECTIONS = [
     title: 'Cookies and tracking',
     body: [
       'This website uses a small number of cookies. Our use of cookies, the categories involved and how to control them are described in full in our Cookie Policy.',
-      'The Zapp Rider app does not use advertising identifiers for third-party tracking.',
+      'The SGD Rider app does not use advertising identifiers for third-party tracking.',
     ],
   },
   {
@@ -121,11 +121,11 @@ export default function PrivacyPolicy() {
     <LegalLayout
       title="Privacy Policy"
       lead="What we collect, why we collect it, how long we keep it and what you can ask us to do about it — written to be read, not to be skipped."
-      description="Zapp Electric's privacy policy: the personal data we collect from riders and clients, our lawful basis, retention periods and your rights under the DPDP Act 2023."
+      description="SGD Electric's privacy policy: the personal data we collect from riders and clients, our lawful basis, retention periods and your rights under the DPDP Act 2023."
       path="/privacy-policy"
       image={IMG.citySpring}
       sections={SECTIONS}
-      contactEmail="privacy@zappelectric.in"
+      contactEmail="privacy@sgdelectric.in"
     />
   )
 }

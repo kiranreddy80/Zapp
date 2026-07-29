@@ -15,7 +15,7 @@ const HOLD_MS = 220
  */
 const SHOW_ON_EVERY_LOAD = true
 
-const SEEN_KEY = 'zappgo:intro-seen'
+const SEEN_KEY = 'sgd:intro-seen'
 const REPLAY_AFTER_MS = 12 * 60 * 60 * 1000 // 12 hours, when gating is on
 
 function shouldPlay() {
@@ -138,8 +138,10 @@ export default function PageLoader() {
               transition={{ duration: 0.5, delay: 0.25 }}
               className="mt-5 font-display text-2xl font-extrabold uppercase leading-none tracking-tight"
             >
-              <span className="text-brand-500">Zapp</span>
-              <span className="text-white">Go</span>
+              {/* the curtain is always dark, so this is the light treatment:
+                  white SGD, bright green Electric — matching <Logo light /> */}
+              <span className="text-white">SGD</span>{' '}
+              <span className="text-brand-500">Electric</span>
             </motion.p>
 
             {/* charge bar */}

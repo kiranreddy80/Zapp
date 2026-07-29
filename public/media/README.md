@@ -11,7 +11,7 @@ it 404s.
 
 | Save as | Shows |
 | --- | --- |
-| `banner-fleet.jpg` | The row of Zapp scooters |
+| `banner-fleet.jpg` | The row of SGD scooters |
 | `banner-charging.jpg` | Scooter plugged into the EV charging point |
 | `banner-street.jpg` | Any third fleet shot (optional) |
 
