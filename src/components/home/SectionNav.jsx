@@ -15,10 +15,9 @@ const SECTIONS = [
   // { id: 'journey', label: 'Our journey' },  // section commented out in Home.jsx
   { id: 'gallery', label: 'Gallery' },
   { id: 'savings', label: 'Why choose SGD' },
-  { id: 'reviews', label: 'Reviews' },
   { id: 'get-started', label: 'Get started' },
   { id: 'impact', label: 'Impact' },
-  { id: 'stories', label: 'Rider stories' },
+  { id: 'reviews', label: 'Reviews' },
   { id: 'investors', label: 'Investors' },
   { id: 'faq', label: 'FAQ' },
   { id: 'get-in-touch', label: 'Contact' },

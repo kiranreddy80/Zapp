@@ -10,7 +10,7 @@ import ReviewWall from '@/components/home/ReviewWall'
 import SavingsCalculator from '@/components/home/SavingsCalculator'
 import GetStarted from '@/components/home/GetStarted'
 import ImpactSection from '@/components/home/ImpactSection'
-import Testimonials from '@/components/home/Testimonials'
+// import Testimonials from '@/components/home/Testimonials'
 import BackedBy from '@/components/home/BackedBy'
 import FaqSection from '@/components/home/FaqSection'
 import SectionNav from '@/components/home/SectionNav'
@@ -37,10 +37,12 @@ export default function Home() {
       {/* <OurJourney /> */}
       <Gallery />
       <SavingsCalculator />
-      <ReviewWall />
       <GetStarted />
       <ImpactSection />
-      <Testimonials />
+      <ReviewWall />
+      {/* Rider stories — hidden for now, uncomment to bring it back.
+          The component and its data are untouched. */}
+      {/* <Testimonials /> */}
       <BackedBy />
       <FaqSection id="faq" tone="muted" scene />
       <GetInTouch />
