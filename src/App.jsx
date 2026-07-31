@@ -26,6 +26,7 @@ const Environment = lazy(() => import('@/pages/Environment'))
 const News = lazy(() => import('@/pages/News'))
 const Blog = lazy(() => import('@/pages/Blog'))
 const Careers = lazy(() => import('@/pages/Careers'))
+const Gallery = lazy(() => import('@/pages/Gallery'))
 const Contact = lazy(() => import('@/pages/Contact'))
 
 const PrivacyPolicy = lazy(() => import('@/pages/legal/PrivacyPolicy'))
@@ -115,6 +116,7 @@ export default function App() {
                 <Route path="/news" element={<News />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/careers" element={<Careers />} />
+                <Route path="/gallery" element={<Gallery />} />
                 <Route path="/contact" element={<Contact />} />
 
                 {/* Legal + utility */}

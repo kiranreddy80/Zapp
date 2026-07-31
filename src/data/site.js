@@ -4,10 +4,46 @@
  */
 
 /**
- * Drop the real logo file in `public/` and set this to its path (e.g.
- * '/logo.svg'). <Logo> uses the file when present and falls back to the inline
- * SVG below it, so nothing else needs changing.
+ * The brand lockup — mark and wordmark together in one file.
+ *
+ * Drop the files in `public/` and set the paths. <Logo> then renders the image
+ * on its own and stops drawing the inline mark and the "SGD Electric" type, so
+ * the wordmark is never doubled up.
+ *
+ * Two files are needed because the header sits on the dark banner at the top of
+ * the page and turns white further down, and the footer is dark:
+ *   onLight — the normal version, for white and pale surfaces
+ *   onDark  — a reversed version, for the dark banner and the footer
+ *
+ * If only `onLight` is supplied it is used on both, which will look wrong on the
+ * dark surfaces. Leave both null to keep the inline mark.
+ *
+ * The files must have a TRANSPARENT background. A white-background image shows
+ * a white rectangle everywhere except the white header.
  */
+export const LOGO = {
+  onLight: '/logo.png',
+  onDark: '/logo-reversed.png',
+  /** Width-to-height of the file, so space is reserved before it loads. */
+  aspect: '1040/514',
+  /**
+   * The same artwork split in two so the cog can turn on its own: `gear` is the
+   * ring, `body` is the lettering and the arrow. Both are full-size canvases, so
+   * stacking them reproduces the logo exactly.
+   *
+   * `origin` is the cog's centre as a percentage of the whole lockup — it is
+   * well left of centre, so rotating without it would swing the ring in an arc.
+   *
+   * Delete this block to fall back to the flat single-file logo.
+   */
+  layers: {
+    onLight: { gear: '/logo-gear.png', body: '/logo-body.png' },
+    onDark: { gear: '/logo-reversed-gear.png', body: '/logo-reversed-body.png' },
+    origin: '21.9% 49.7%',
+  },
+}
+
+/** @deprecated use LOGO. Kept so nothing breaks if it is still referenced. */
 export const LOGO_SRC = null
 
 export const SITE = {
@@ -196,6 +232,12 @@ export const NAV = [
             icon: 'HeartHandshake',
           },
           {
+            label: 'Gallery',
+            to: '/gallery',
+            desc: 'Celebrations, festivals and games',
+            icon: 'Images',
+          },
+          {
             label: 'Technology',
             to: '/technology',
             desc: 'SGD OS, telematics and swap network',
@@ -249,6 +291,7 @@ export const FOOTER_NAV = [
       { label: 'Who We Are', to: '/about' },
       { label: 'Our Journey', to: '/about#journey' },
       { label: 'Life at SGD', to: '/about#life' },
+      { label: 'Gallery', to: '/gallery' },
       { label: 'Technology', to: '/technology' },
       { label: 'ESG', to: '/esg' },
       { label: 'Environment', to: '/environment' },

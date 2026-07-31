@@ -250,6 +250,36 @@ export const TESTIMONIALS = [
   },
 ]
 
+/**
+ * Short rider reviews for the wall below the savings calculator.
+ *
+ * PLACEHOLDER — every name, city and quote here was written during the build.
+ * Real reviews need the rider's signed consent before publication, and the
+ * aggregate below has to match whatever store or listing it is taken from.
+ * Tracked in docs/CONTENT-REQUEST.md.
+ */
+export const REVIEW_SUMMARY = {
+  score: 4.8,
+  outOf: 5,
+  count: 3412,
+  note: 'Verified riders across twelve cities',
+}
+
+export const REVIEWS = [
+  { name: 'Arun P.', city: 'Chennai', stars: 5, text: 'Switched three months back. My fuel bill was ₹9,000 a month. Now it is nothing.' },
+  { name: 'Farhan S.', city: 'Hyderabad', stars: 5, text: 'Battery swap takes under two minutes. I have never had to wait at a hub.' },
+  { name: 'Deepak R.', city: 'Noida', stars: 5, text: 'My scooter failed on a Tuesday. They handed me another one the same morning.' },
+  { name: 'Kavita M.', city: 'Pune', stars: 5, text: 'No licence needed on the low-speed model. That is the only reason I could start.' },
+  { name: 'Sameer T.', city: 'Mumbai', stars: 5, text: 'Earnings land in my account every night. No arguments, no follow-up calls.' },
+  { name: 'Rohit K.', city: 'Jaipur', stars: 4, text: 'Insurance was already included. I did not expect that at this rental price.' },
+  { name: 'Nasir A.', city: 'Ahmedabad', stars: 5, text: 'I run eight vehicles now. The dashboard tells me which one is idle before I ask.' },
+  { name: 'Lakshmi V.', city: 'Bengaluru', stars: 5, text: 'Servicing costs me nothing. That alone is ₹1,500 back in my pocket each month.' },
+  { name: 'Gurpreet S.', city: 'Delhi NCR', stars: 5, text: 'Two years on the platform and not one day lost to a breakdown.' },
+  { name: 'Manoj B.', city: 'Lucknow', stars: 5, text: 'Rent to own means it becomes mine. My father did not believe me until he saw the papers.' },
+  { name: 'Srinivas D.', city: 'Hyderabad', stars: 5, text: 'Support answered me in Telugu. Small thing, but it made the whole difference.' },
+  { name: 'Imtiaz H.', city: 'Kolkata', stars: 5, text: 'A full day of riding costs me about ₹20 to charge. Petrol was ₹300.' },
+]
+
 export const FAQS = [
   {
     q: 'Do I need a driving licence to ride a SGD scooter?',
@@ -809,12 +839,162 @@ export const TIMELINE = [
   },
 ]
 
+/**
+ * The letter shown above the journey section. Figures here are deliberately the
+ * same ones the banner and the rider stories already use — 26,000 vehicles,
+ * 24,000 riders, twelve cities, and the ₹15,000 a month Ramesh Yadav describes.
+ */
+export const CEO_MESSAGE = {
+  name: 'Aditya Rao',
+  role: 'Co-founder & Chief Executive',
+  photo: IMG.portraitExec,
+  eyebrow: 'Message from our CEO',
+  // split so the second half can carry the brand colour and its own reveal
+  lead: [
+    'We did not set out to sell electric vehicles.',
+    'We set out to raise what a delivery rider takes home at the end of a day.',
+  ],
+  since: 'Co-founder since 2019',
+  // company vitals shown beside the letter. Figures match the banner and the
+  // impact ledger — nothing invented for this section alone.
+  vitals: [
+    { label: 'Founded', value: '2019' },
+    { label: 'Cities live', value: '12' },
+    { label: 'Vehicles on road', value: '26,000' },
+    { label: 'Riders earning', value: '24,000' },
+  ],
+  body: [
+    'When we started in 2019 the argument for going electric was environmental, and the answer from riders was always the same — it costs too much to switch. So we stopped selling vehicles and started renting them. Insurance, servicing and unlimited battery swaps included, for less than a rider was already handing over to fuel pumps and mechanics.',
+    'Seven years later that one decision is what 26,000 vehicles and 24,000 riders are built on. A rider in Gurugram keeps around ₹15,000 a month that used to disappear into petrol and repairs. Twelve cities run on it. The emissions we avoid are real and we measure them honestly — but they follow from the economics, never the other way round.',
+    'We are nowhere near finished. Most of India’s last mile still burns petrol, and the people riding it are the ones paying for that. Closing the gap is the whole job.',
+  ],
+}
+
+/** Filter chips above the gallery. `all` is prepended by the component. */
+export const GALLERY_TAGS = [
+  'Celebrations',
+  'Milestones',
+  'Festivals',
+  'Games',
+  'Office',
+  'Showroom',
+  'Rides',
+]
+
+/**
+ * Homepage gallery. Every tile is the same shape, so order here is only reading
+ * order — no layout is encoded in the data. `tag` must be one of GALLERY_TAGS.
+ */
+export const GALLERY = [
+  {
+    src: IMG.cultureCheer,
+    ratio: '1600/1067',
+    // the sign in the photo reads "happy birthday" — captioning this as a city
+    // launch would be visibly at odds with what is on screen
+    alt: 'Colleagues in party hats holding up a birthday sign in the office',
+    caption: 'Every excuse taken',
+    tag: 'Celebrations',
+  },
+  {
+    src: IMG.cultureSelfie,
+    ratio: '1600/1067',
+    alt: 'Colleagues taking a selfie together wearing party hats',
+    caption: 'The group photo nobody escapes',
+    tag: 'Celebrations',
+  },
+  {
+    src: IMG.cultureNewHire,
+    ratio: '1600/1067',
+    alt: 'Colleagues applauding a new joiner in the office',
+    caption: 'New joiners',
+    tag: 'Milestones',
+  },
+  {
+    src: IMG.cultureWin,
+    ratio: '1600/1067',
+    alt: 'A team celebrating a result together in the office',
+    caption: 'City number twelve',
+    tag: 'Milestones',
+  },
+  {
+    src: IMG.cultureHoli,
+    ratio: '1600/2400',
+    alt: 'A person smiling with bright coloured powder on their hands and face at Holi',
+    caption: 'Holi, no exceptions',
+    tag: 'Festivals',
+  },
+  {
+    src: IMG.cultureDiwali,
+    ratio: '1600/1067',
+    alt: 'Oil lamps and marigold flowers lit for Diwali',
+    caption: 'Diwali at every hub',
+    tag: 'Festivals',
+  },
+  {
+    src: IMG.cultureSparkler,
+    ratio: '1600/2400',
+    alt: 'A person in traditional dress holding a lit sparkler',
+    caption: 'Sparklers on the forecourt',
+    tag: 'Festivals',
+  },
+  {
+    src: IMG.cultureCricket,
+    ratio: '1600/983',
+    alt: 'A cricket match in progress on an open ground',
+    caption: 'The inter-hub league',
+    tag: 'Games',
+  },
+  {
+    src: IMG.cultureTableTennis,
+    ratio: '1600/1067',
+    alt: 'People playing table tennis in a recreation room',
+    caption: 'Settled over table tennis',
+    tag: 'Games',
+  },
+  {
+    src: IMG.cultureDesk,
+    ratio: '1600/1067',
+    alt: 'Colleagues working through a plan around a table',
+    caption: 'Monday planning',
+    tag: 'Office',
+  },
+  {
+    src: IMG.cultureStandup,
+    ratio: '1600/1068',
+    alt: 'A team standing around a whiteboard during a discussion',
+    caption: 'Standups that overrun',
+    tag: 'Office',
+  },
+  {
+    src: IMG.showroomLineup,
+    ratio: '1600/2404',
+    alt: 'A row of green scooters parked side by side',
+    caption: 'The line-up',
+    tag: 'Showroom',
+  },
+  {
+    src: IMG.rideGreenMoped,
+    ratio: '1600/1067',
+    alt: 'A green electric moped parked on a street',
+    caption: 'One rider, one scooter',
+    tag: 'Rides',
+  },
+  {
+    src: IMG.rideGreenBox,
+    ratio: '1600/2400',
+    alt: 'A green scooter fitted with a delivery box and helmet',
+    caption: 'Loaded and out',
+    tag: 'Rides',
+  },
+]
+
 export const LEADERSHIP = [
   {
     name: 'Aditya Rao',
     role: 'Co-founder & Chief Executive',
     bio: 'Previously built the last-mile network at a national logistics firm. Believes rider economics, not vehicle specs, decide whether EVs win.',
-    photo: avatar(2324638),
+    // matches CEO_MESSAGE so he is the same person on both pages
+    photo: IMG.portraitExec,
   },
   {
     name: 'Meera Krishnan',

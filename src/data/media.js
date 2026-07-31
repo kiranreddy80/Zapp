@@ -102,6 +102,10 @@ export const IMG = {
   portraitWoman2: photo(34381970, 800),
   portraitWoman3: photo(29852895, 800),
   portraitWoman4: photo(18809829, 800),
+  // Business portrait for the CEO letter. Deliberately outside the portraitMan
+  // set — every one of those is already a rider or fleet owner in TESTIMONIALS,
+  // and the same face cannot appear twice on the home page in two roles.
+  portraitExec: photo(7869105, 900),
 
   // ---- Workplace ---------------------------------------------------------
   teamMeeting: photo(7869111),
@@ -116,6 +120,30 @@ export const IMG = {
   forestRiver: photo(2739664),
   forestSun: photo(4552902),
   forestAerial: photo(695299),
+
+  // ---- Life at SGD (homepage gallery) ------------------------------------
+  // Culture rather than fleet, grouped the way the gallery filters it:
+  // celebrations, milestones, festivals, games, the office, the showroom floor
+  // and the vehicles. Each was rendered at the gallery's own crop before use.
+  cultureCheer: photo(7580814),
+  cultureSelfie: photo(7580789),
+  cultureNewHire: photo(7581123),
+  cultureWin: photo(7793691),
+  // the previous Holi shot was a dark, muddy crowd; this one is bright and the
+  // subject is legible at tile size
+  cultureHoli: photo(21263347),
+  cultureDiwali: photo(4078516),
+  cultureSparkler: photo(8819253),
+  cultureCricket: photo(30671896),
+  cultureTableTennis: photo(33438350),
+  cultureDesk: photo(3184298),
+  cultureStandup: photo(7869111),
+  // Vehicles are green only. The earlier picks were a multicoloured rental
+  // lineup and grey delivery scooters, which fought the brand on a green
+  // surface; these three are the closest to brand green that exist as stock.
+  showroomLineup: photo(28670971),
+  rideGreenMoped: photo(15675779),
+  rideGreenBox: photo(13119037),
 
   // ---- Advertising -------------------------------------------------------
   roadsideBanner: photo(6544553),

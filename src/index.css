@@ -315,6 +315,89 @@
   mix-blend-mode: multiply;
 }
 
+/* ------------------------------------------------------------------
+   Logo cog
+   ------------------------------------------------------------------
+   Turns continuously rather than on hover. Kept slow — this sits in the
+   header on every page, and anything quicker pulls the eye away from the
+   content. The cog is an open C in the artwork, so the gap sweeps round
+   as it turns; that is intentional.
+   ------------------------------------------------------------------ */
+@keyframes logo-cog {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.logo-cog {
+  animation: logo-cog var(--cog-dur, 14s) linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-cog {
+    animation: none;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Review wall
+   ------------------------------------------------------------------
+   Columns of cards drifting vertically at different speeds. The track
+   holds the list twice and travels exactly -50%, so the loop is seamless
+   with no jump. Adjacent columns run opposite directions, which is what
+   stops the wall reading as one sliding block.
+   ------------------------------------------------------------------ */
+@keyframes review-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes review-down {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.review-track {
+  animation: review-up var(--review-dur, 46s) linear infinite;
+  will-change: transform;
+}
+
+.review-track--down {
+  animation-name: review-down;
+}
+
+/* let a reader stop the wall to actually read a card */
+.review-wall:hover .review-track,
+.review-wall:focus-within .review-track {
+  animation-play-state: paused;
+}
+
+/* fade the columns out at both ends so cards enter and leave, rather than
+   being sliced off by the section edge */
+.review-mask {
+  mask-image: linear-gradient(to bottom, transparent, #000 11%, #000 89%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 11%, #000 89%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .review-track {
+    animation: none;
+  }
+  .review-mask {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+}
+
 .current-ring {
   position: relative;
   isolation: isolate;

@@ -11,8 +11,11 @@ const SECTIONS = [
   { id: 'partners', label: 'Partners' },
   { id: 'hero', label: 'Rent an EV' },
   { id: 'mission', label: 'Mission & vision' },
-  { id: 'journey', label: 'Our journey' },
+  { id: 'ceo', label: 'From our CEO' },
+  // { id: 'journey', label: 'Our journey' },  // section commented out in Home.jsx
+  { id: 'gallery', label: 'Gallery' },
   { id: 'savings', label: 'Why choose SGD' },
+  { id: 'reviews', label: 'Reviews' },
   { id: 'get-started', label: 'Get started' },
   { id: 'impact', label: 'Impact' },
   { id: 'stories', label: 'Rider stories' },

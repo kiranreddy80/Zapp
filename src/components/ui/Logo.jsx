@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import cn from '@/lib/cn'
-import { LOGO_SRC, SITE } from '@/data/site'
+import { LOGO, LOGO_SRC, SITE } from '@/data/site'
 
 /**
  * SGD Electric logo: a circular badge carrying a bolt over a scooter, followed by
@@ -45,6 +45,12 @@ function Mark({ className }) {
 }
 
 export default function Logo({ className, light = false, to = '/' }) {
+  // A supplied lockup already contains the wordmark, so it replaces the whole
+  // thing — drawing the inline type beside it would say "SGD Electric" twice.
+  if (LOGO.onLight || LOGO.onDark) {
+    return <Lockup className={className} light={light} to={to} />
+  }
+
   return (
     <Link
       to={to}
@@ -71,6 +77,62 @@ export default function Logo({ className, light = false, to = '/' }) {
             green instead. Still unmistakably green, and legible at 5:1. */}
         <span className={light ? 'text-brand-500' : 'text-brand-700'}>Electric</span>
       </span>
+    </Link>
+  )
+}
+
+/**
+ * The supplied brand lockup, when `LOGO` in data/site.js points at real files.
+ *
+ * `light` means "sitting on a dark surface", matching the prop the rest of the
+ * layout already uses, so the reversed artwork is what gets picked there.
+ * The height is fixed and the width follows the file's own aspect ratio, so a
+ * wide lockup is never squashed into a square.
+ */
+function Lockup({ className, light, to }) {
+  const src = (light ? LOGO.onDark : LOGO.onLight) ?? LOGO.onLight ?? LOGO.onDark
+  const split = LOGO.layers && (light ? LOGO.layers.onDark : LOGO.layers.onLight)
+
+  return (
+    <Link
+      to={to}
+      aria-label={`${SITE.name} — home`}
+      className={cn('group inline-flex shrink-0 items-center', className)}
+    >
+      {split ? (
+        // Two stacked layers at the same size, so this is pixel-identical to the
+        // flat file until the cog moves. The alt text sits on the wrapper and
+        // both images are decorative, or a screen reader would read the name twice.
+        <span
+          role="img"
+          aria-label={SITE.name}
+          className="relative block h-9 w-auto sm:h-11"
+          style={{ aspectRatio: LOGO.aspect }}
+        >
+          <img
+            src={split.gear}
+            alt=""
+            aria-hidden="true"
+            /* The origin is the cog's own centre, well left of the lockup's —
+               rotating about the image centre would swing it in an arc. */
+            style={{ transformOrigin: LOGO.layers.origin }}
+            className="logo-cog absolute inset-0 h-full w-full object-contain"
+          />
+          <img
+            src={split.body}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-contain"
+          />
+        </span>
+      ) : (
+        <img
+          src={src}
+          alt={SITE.name}
+          style={{ aspectRatio: LOGO.aspect }}
+          className="h-9 w-auto object-contain transition-transform duration-500 group-hover:scale-[1.03] sm:h-11"
+        />
+      )}
     </Link>
   )
 }

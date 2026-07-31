@@ -3,7 +3,10 @@ import MissionBanner from '@/components/home/MissionBanner'
 import Hero from '@/components/home/Hero'
 import PartnerMarquee from '@/components/home/PartnerMarquee'
 import MissionVision from '@/components/home/MissionVision'
-import OurJourney from '@/components/home/OurJourney'
+import CeoMessage from '@/components/home/CeoMessage'
+// import OurJourney from '@/components/home/OurJourney'
+import Gallery from '@/components/home/Gallery'
+import ReviewWall from '@/components/home/ReviewWall'
 import SavingsCalculator from '@/components/home/SavingsCalculator'
 import GetStarted from '@/components/home/GetStarted'
 import ImpactSection from '@/components/home/ImpactSection'
@@ -28,8 +31,13 @@ export default function Home() {
       <PartnerMarquee />
       <Hero />
       <MissionVision />
-      <OurJourney />
+      <CeoMessage />
+      {/* Our journey — hidden for now, uncomment to bring it back.
+          The component and its data are untouched. */}
+      {/* <OurJourney /> */}
+      <Gallery />
       <SavingsCalculator />
+      <ReviewWall />
       <GetStarted />
       <ImpactSection />
       <Testimonials />
