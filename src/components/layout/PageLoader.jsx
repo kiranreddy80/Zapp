@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { LOGO, SITE } from '@/data/site'
 
 const EASE = [0.22, 1, 0.36, 1]
 
@@ -105,44 +106,31 @@ export default function PageLoader() {
           />
 
           <div className="relative flex flex-col items-center">
-            {/* badge */}
-            <motion.svg
-              viewBox="0 0 48 48"
-              className="h-20 w-20"
-              initial={{ opacity: 0, scale: 0.8 }}
+            {/* The real lockup, reversed for the dark curtain. Two layers so the
+                cog keeps turning here exactly as it does in the header. */}
+            <motion.span
+              role="img"
+              aria-label={SITE.name}
+              className="relative block w-[17rem] max-w-[72vw]"
+              style={{ aspectRatio: LOGO.aspect }}
+              initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, ease: EASE }}
             >
-              <circle cx="24" cy="24" r="22.5" fill="#06120C" />
-              <circle cx="24" cy="24" r="22.5" fill="none" stroke="#12B76A" strokeWidth="3" />
-              <motion.path
-                d="M27 9 15.5 26.5h7.2L21 39 33.5 21.5h-7.7L27 9Z"
-                fill="#BFF700"
-                stroke="#06120C"
-                strokeWidth="1.4"
-                strokeLinejoin="round"
-                initial={{ opacity: 0, y: -4 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.18 }}
+              <img
+                src={LOGO.layers.onDark.gear}
+                alt=""
+                aria-hidden="true"
+                style={{ transformOrigin: LOGO.layers.origin }}
+                className="logo-cog absolute inset-0 h-full w-full object-contain"
               />
-              <g fill="#12B76A">
-                <circle cx="16" cy="36.5" r="3.1" />
-                <circle cx="32" cy="36.5" r="3.1" />
-                <path d="M13.5 34.2h5.2l3.6-4.1h6.6l2.4 4.1h2.4v1.9h-3.6l-1.9-3.2h-4.9l-3.4 3.9h-6.4v-2.6Z" />
-              </g>
-            </motion.svg>
-
-            <motion.p
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.25 }}
-              className="mt-5 font-display text-2xl font-extrabold uppercase leading-none tracking-tight"
-            >
-              {/* the curtain is always dark, so this is the light treatment:
-                  white SGD, bright green Electric — matching <Logo light /> */}
-              <span className="text-white">SGD</span>{' '}
-              <span className="text-brand-500">Electric</span>
-            </motion.p>
+              <img
+                src={LOGO.layers.onDark.body}
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 h-full w-full object-contain"
+              />
+            </motion.span>
 
             {/* charge bar */}
             <div className="mt-7 h-1 w-52 overflow-hidden rounded-full bg-white/12">
