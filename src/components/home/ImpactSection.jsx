@@ -15,7 +15,7 @@ export default function ImpactSection() {
   const reduced = useReducedMotion()
 
   return (
-    <section id="impact" className="relative isolate overflow-hidden bg-ink-950 py-24 sm:py-32">
+    <section id="impact" className="relative isolate overflow-hidden bg-ink-950 py-16 sm:py-20">
       <div className="absolute inset-0 -z-20">
         {reduced ? (
           <img src={VIDEO.forestPoster} alt="" className="h-full w-full object-cover" />

@@ -24,7 +24,7 @@ export default function MissionVision() {
     // painted type blends against whatever the root happens to paint.
     <section
       id="mission"
-      className="wall wall-seams wall-grain relative isolate overflow-hidden py-24 sm:py-32"
+      className="wall wall-seams wall-grain relative isolate overflow-hidden py-16 sm:py-20"
     >
       {/* faint scuffs, so the surface is not perfectly uniform */}
       <div

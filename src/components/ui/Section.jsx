@@ -22,10 +22,10 @@ const TONES = {
 }
 
 const PADS = {
-  sm: 'py-14 sm:py-16',
-  md: 'py-20 sm:py-24',
-  lg: 'py-24 sm:py-32',
-  xl: 'py-28 sm:py-40',
+  sm: 'py-10 sm:py-12',
+  md: 'py-14 sm:py-16',
+  lg: 'py-16 sm:py-20',
+  xl: 'py-20 sm:py-24',
 }
 
 export default function Section({

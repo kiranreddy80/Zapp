@@ -1,9 +1,11 @@
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import Section from '@/components/ui/Section'
 import Reveal from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
 import Button from '@/components/ui/Button'
 import { CITY_HUBS, CONTACT } from '@/data/site'
+import cn from '@/lib/cn'
 
 /**
  * Contact block with a live hub map.
@@ -73,35 +75,54 @@ export default function GetInTouch() {
         </Reveal>
 
         {/* -------------------------------------------------- map ---- */}
-        <Reveal from="left" delay={0.1}>
+        <Reveal from="left" delay={0.1} className="min-w-0">
           <div className="relative overflow-hidden rounded-[1.75rem] border border-brand-200 bg-white shadow-card">
             {/*
-              Only the city picker overlays the map, pinned right. Google's
-              embed renders its own place card top-left, so anything placed
-              there collides with it.
+              City tabs sit above the map rather than floating over it. As an
+              overlay the picker fought Google's own place card, and every hub
+              was hidden behind a click; laid out here they are all visible at
+              once and read as part of the card.
+
+              The row scrolls sideways on narrow screens instead of wrapping to
+              two lines, so the map keeps its position on a phone.
             */}
-            <div className="absolute right-4 top-4 z-10">
-              <div className="relative">
-                <label htmlFor="hub-city" className="sr-only">
-                  Choose a city
-                </label>
-                <select
-                  id="hub-city"
-                  value={index}
-                  onChange={(e) => setIndex(Number(e.target.value))}
-                  className="cursor-pointer appearance-none rounded-lg bg-white py-2.5 pl-4 pr-10 text-[13px] font-semibold text-ink-900 shadow-lift outline-none transition-colors hover:text-brand-700 focus-visible:ring-2 focus-visible:ring-brand-500/40"
-                >
-                  {CITY_HUBS.map((h, i) => (
-                    <option key={h.city} value={i}>
+            <div
+              role="tablist"
+              aria-label="Choose a city"
+              className="no-scrollbar flex gap-1 overflow-x-auto border-b border-brand-100 bg-brand-50/60 p-1.5"
+            >
+              {CITY_HUBS.map((h, i) => {
+                const on = i === index
+                return (
+                  <button
+                    key={h.city}
+                    type="button"
+                    role="tab"
+                    aria-selected={on}
+                    onClick={() => setIndex(i)}
+                    className={cn(
+                      'relative shrink-0 rounded-xl px-4 py-2.5 font-display text-[13px] font-bold outline-none transition-colors duration-300',
+                      'focus-visible:ring-2 focus-visible:ring-brand-500/40',
+                      on ? 'text-white' : 'text-ink-900/60 hover:text-ink-900',
+                    )}
+                  >
+                    {on && (
+                      <motion.span
+                        layoutId="hub-tab"
+                        className="absolute inset-0 rounded-xl bg-brand-700 shadow-glow"
+                        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                      />
+                    )}
+                    <span className="relative flex items-center gap-1.5">
+                      <Icon
+                        name="MapPin"
+                        className={cn('h-3.5 w-3.5', on ? 'text-volt-400' : 'text-brand-600/70')}
+                      />
                       {h.label}
-                    </option>
-                  ))}
-                </select>
-                <Icon
-                  name="ChevronDown"
-                  className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-500"
-                />
-              </div>
+                    </span>
+                  </button>
+                )
+              })}
             </div>
 
             <iframe
