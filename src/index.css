@@ -318,19 +318,20 @@
 /* ------------------------------------------------------------------
    Logo cog
    ------------------------------------------------------------------
-   Turns continuously rather than on hover. Kept slow — this sits in the
-   header on every page, and anything quicker pulls the eye away from the
-   content. The cog is an open C in the artwork, so the gap sweeps round
-   as it turns; that is intentional.
+   Swings through 180° and back, so the opening of the C flips from one
+   side to the other and returns. `alternate` is what reverses it, and
+   ease-in-out settles at each end rather than snapping round — a linear
+   loop would read as a spinner. Slow, because this sits in the header of
+   every page and anything quicker pulls the eye off the content.
    ------------------------------------------------------------------ */
 @keyframes logo-cog {
   to {
-    transform: rotate(360deg);
+    transform: rotate(180deg);
   }
 }
 
 .logo-cog {
-  animation: logo-cog var(--cog-dur, 14s) linear infinite;
+  animation: logo-cog var(--cog-dur, 4.5s) ease-in-out infinite alternate;
   will-change: transform;
 }
 
