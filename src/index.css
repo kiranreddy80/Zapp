@@ -318,15 +318,15 @@
 /* ------------------------------------------------------------------
    Logo cog
    ------------------------------------------------------------------
-   Swings through 180° and back, so the opening of the C flips from one
-   side to the other and returns. `alternate` is what reverses it, and
+   Swings through 120° and back, so the opening of the C travels round and
+   returns. `alternate` is what reverses it, and
    ease-in-out settles at each end rather than snapping round — a linear
    loop would read as a spinner. Slow, because this sits in the header of
    every page and anything quicker pulls the eye off the content.
    ------------------------------------------------------------------ */
 @keyframes logo-cog {
   to {
-    transform: rotate(180deg);
+    transform: rotate(120deg);
   }
 }
 
