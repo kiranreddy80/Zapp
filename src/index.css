@@ -316,6 +316,40 @@
 }
 
 /* ------------------------------------------------------------------
+   Banner "zero emission" sheen
+   ------------------------------------------------------------------
+   A pale wash travelling letter by letter, on a delay per character so it
+   reads as a current passing through the word rather than every letter
+   lighting at once.
+   ------------------------------------------------------------------ */
+@keyframes zero-sheen {
+  0%,
+  62% {
+    color: theme('colors.volt.400');
+    text-shadow: none;
+  }
+  72% {
+    color: #f4ffd6;
+    text-shadow: 0 0 18px rgba(210, 255, 58, 0.55);
+  }
+  86%,
+  100% {
+    color: theme('colors.volt.400');
+    text-shadow: none;
+  }
+}
+
+.zero-sheen {
+  animation: zero-sheen 4.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zero-sheen {
+    animation: none;
+  }
+}
+
+/* ------------------------------------------------------------------
    Logo cog
    ------------------------------------------------------------------
    One steady turn, continuously. Linear and slow — this sits in the header

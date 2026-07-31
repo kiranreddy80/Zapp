@@ -139,8 +139,36 @@ export default function MissionBanner() {
       <div className="container relative text-center">
         <h2 className="mx-auto max-w-3xl font-display text-[2.4rem] font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.6rem]">
           <SplitText text="Join us in our mission" />
-          <span className="mt-1 block text-volt-400">
-            <SplitText text="zero emission" delay={0.35} />
+          {/* Set apart from the Sora line above it: the mono caps face, wide
+              tracking and lower case give it a different voice rather than
+              just a different colour. Each letter drops in on its own, and a
+              lime sheen travels across afterwards. */}
+          <span className="mt-3 block font-caps text-[.62em] font-bold italic tracking-[.14em] text-volt-400 sm:mt-4">
+            {'zero emission'.split('').map((ch, i) =>
+              ch === ' ' ? (
+                <span key={i} className="inline-block w-[.4em]" />
+              ) : (
+                <motion.span
+                  key={i}
+                  aria-hidden="true"
+                  className="zero-sheen inline-block"
+                  initial={reduced ? false : { opacity: 0, y: '0.5em', rotateX: -70 }}
+                  whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                  viewport={{ once: true, amount: 0.6 }}
+                  transition={{
+                    duration: 0.55,
+                    delay: 0.5 + i * 0.045,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  style={{ animationDelay: `${1.1 + i * 0.045}s` }}
+                >
+                  {ch}
+                </motion.span>
+              ),
+            )}
+            {/* the split above is decorative markup; this keeps it one readable
+                phrase for a screen reader */}
+            <span className="sr-only">zero emission</span>
           </span>
         </h2>
 
