@@ -105,7 +105,7 @@ export const IMG = {
   // Business portrait for the CEO letter. Deliberately outside the portraitMan
   // set — every one of those is already a rider or fleet owner in TESTIMONIALS,
   // and the same face cannot appear twice on the home page in two roles.
-  portraitExec: photo(7869105, 900),
+  portraitExec: photo(37894130, 900),
 
   // ---- Workplace ---------------------------------------------------------
   teamMeeting: photo(7869111),

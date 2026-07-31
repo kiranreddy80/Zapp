@@ -100,16 +100,9 @@ export default function CeoMessage() {
                   wrapperClassName="absolute inset-0"
                   className="object-cover"
                 />
-                <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-950/70 via-ink-950/10 to-transparent" />
-
-                {/* sits inside the frame — as an outside chip it was wider than
-                    the photo and hung off the edge */}
-                <motion.p
-                  {...rise(0.32)}
-                  className="absolute inset-x-3 bottom-3 rounded-xl bg-white/12 px-3 py-2 text-center font-display text-[11px] font-bold uppercase tracking-[.14em] text-white backdrop-blur-md"
-                >
-                  {m.since}
-                </motion.p>
+                {/* a light scrim only, now the caption has gone — it keeps the
+                    photo sitting into the frame rather than floating in it */}
+                <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-950/35 via-transparent to-transparent" />
               </div>
             </div>
           </motion.div>

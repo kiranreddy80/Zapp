@@ -854,7 +854,6 @@ export const CEO_MESSAGE = {
     'We did not set out to sell electric vehicles.',
     'We set out to raise what a delivery rider takes home at the end of a day.',
   ],
-  since: 'Co-founder since 2019',
   // company vitals shown beside the letter. Figures match the banner and the
   // impact ledger — nothing invented for this section alone.
   vitals: [
