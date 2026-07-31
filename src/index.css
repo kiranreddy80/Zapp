@@ -318,20 +318,18 @@
 /* ------------------------------------------------------------------
    Logo cog
    ------------------------------------------------------------------
-   Swings through 120° and back, so the opening of the C travels round and
-   returns. `alternate` is what reverses it, and
-   ease-in-out settles at each end rather than snapping round — a linear
-   loop would read as a spinner. Slow, because this sits in the header of
-   every page and anything quicker pulls the eye off the content.
+   One steady turn, continuously. Linear and slow — this sits in the header
+   of every page, so an eased or quicker rotation pulls the eye off the
+   content.
    ------------------------------------------------------------------ */
 @keyframes logo-cog {
   to {
-    transform: rotate(120deg);
+    transform: rotate(360deg);
   }
 }
 
 .logo-cog {
-  animation: logo-cog var(--cog-dur, 4.5s) ease-in-out infinite alternate;
+  animation: logo-cog var(--cog-dur, 12s) linear infinite;
   will-change: transform;
 }
 
