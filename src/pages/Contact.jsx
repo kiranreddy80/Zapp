@@ -6,6 +6,7 @@ import CTABand from '@/components/sections/CTABand'
 import Section, { SectionHeading } from '@/components/ui/Section'
 import Reveal, { RevealGroup, RevealItem } from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
+import Field from '@/components/ui/Field'
 import Accordion from '@/components/ui/Accordion'
 import { CONTACT, CITIES } from '@/data/site'
 import { FAQS } from '@/data/content'
@@ -56,31 +57,6 @@ const SUBJECTS = [
   'Press',
   'Something else',
 ]
-
-function Field({ label, id, as = 'input', required, children, ...rest }) {
-  const Cmp = as
-  return (
-    <div className={as === 'textarea' ? 'sm:col-span-2' : undefined}>
-      <label htmlFor={id} className="block text-sm font-medium text-neutral-700">
-        {label}
-        {required && <span className="ml-0.5 text-brand-700">*</span>}
-      </label>
-      <Cmp
-        id={id}
-        name={id}
-        required={required}
-        className={cn(
-          'mt-2 w-full rounded-2xl border border-neutral-200 bg-white px-4 text-[15px] transition-colors',
-          'placeholder:text-neutral-500 focus:border-brand-400 focus:outline-none focus:ring-4 focus:ring-brand-500/10',
-          as === 'textarea' ? 'min-h-[8rem] resize-y py-3.5' : 'h-12',
-        )}
-        {...rest}
-      >
-        {children}
-      </Cmp>
-    </div>
-  )
-}
 
 function ContactForm() {
   const [status, setStatus] = useState('idle')

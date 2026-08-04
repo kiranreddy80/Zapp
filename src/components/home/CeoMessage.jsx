@@ -10,17 +10,22 @@ import { CEO_MESSAGE } from '@/data/content'
 const EASE = [0.22, 1, 0.36, 1]
 
 /*
- * A stylised signature rather than a font. Real letterforms drawn as a single
- * stroke and revealed with pathLength read as a hand signing, which a typeface
- * cannot fake — and it gives the letter a proper close.
+ * A stylised signature rather than a font: real letterforms drawn as strokes
+ * and revealed with pathLength read as a hand signing, which a typeface cannot
+ * fake.
+ *
+ * Redrawn when the name changed — the previous strokes read as "Rao", which
+ * would have been a different person's signature under Barupati Srikanth's
+ * letter. A capital B leading into a single running stroke, the way a signed
+ * name usually goes: legible at the start, a flourish after.
  */
 const SIGNATURE = [
-  // one connected stroke for the forename — separate letter shapes came out
-  // looking like printed capitals rather than handwriting
-  'M4 58 C16 20 26 12 32 24 C37 34 31 48 24 49 C16 50 19 34 35 30 C47 27 55 34 57 45 C59 53 65 55 71 49 C77 43 75 30 69 30 C63 30 61 41 67 47 C74 53 84 48 86 37',
-  'M98 56 C104 26 109 19 115 19 C123 19 121 31 111 35 C103 38 101 37 101 37 C111 37 119 43 121 56',
-  'M139 35 C129 35 125 47 132 53 C139 59 147 51 145 38',
-  'M161 37 C153 37 149 49 157 53 C165 57 171 47 165 39 C161 34 155 35 153 39',
+  // B
+  'M10 56 C13 38 16 22 18 14 C26 12 36 14 35 23 C34 31 25 33 19 33 C28 32 38 35 37 45 C36 54 24 57 15 55',
+  // running stroke through the rest of the name
+  'M48 50 C52 30 56 22 61 22 C67 22 64 34 55 38 C48 41 46 40 46 40 C56 40 63 45 65 55 C67 62 74 63 80 56 C86 49 83 36 77 37 C71 38 70 49 77 54 C85 59 95 53 97 41',
+  'M108 52 C112 34 116 26 121 26',
+  'M130 40 C122 40 118 50 125 55 C132 60 140 52 138 40',
 ]
 
 export default function CeoMessage() {
@@ -170,7 +175,7 @@ export default function CeoMessage() {
             className="mt-9 border-t border-ink-900/10 pt-7"
           >
             <svg
-              viewBox="0 0 190 74"
+              viewBox="0 0 155 72"
               className="h-[4.2rem] w-auto overflow-visible"
               role="img"
               aria-label={`Signed, ${m.name}`}
@@ -191,7 +196,7 @@ export default function CeoMessage() {
                 ))}
                 {/* closing flourish */}
                 <motion.path
-                  d="M2 68 C50 80 128 76 186 61"
+                  d="M4 66 C44 76 106 73 150 60"
                   strokeWidth="3"
                   initial={reduced ? false : { pathLength: 0, opacity: 0 }}
                   whileInView={{ pathLength: 1, opacity: 0.55 }}

@@ -845,8 +845,8 @@ export const TIMELINE = [
  * 24,000 riders, twelve cities, and the ₹15,000 a month Ramesh Yadav describes.
  */
 export const CEO_MESSAGE = {
-  name: 'Aditya Rao',
-  role: 'Co-founder & Chief Executive',
+  name: 'Barupati Srikanth',
+  role: 'Founder & Chief Executive',
   photo: IMG.portraitExec,
   eyebrow: 'Message from our CEO',
   // split so the second half can carry the brand colour and its own reveal
@@ -989,8 +989,8 @@ export const GALLERY = [
 
 export const LEADERSHIP = [
   {
-    name: 'Aditya Rao',
-    role: 'Co-founder & Chief Executive',
+    name: 'Barupati Srikanth',
+    role: 'Founder & Chief Executive',
     bio: 'Previously built the last-mile network at a national logistics firm. Believes rider economics, not vehicle specs, decide whether EVs win.',
     // matches CEO_MESSAGE so he is the same person on both pages
     photo: IMG.portraitExec,

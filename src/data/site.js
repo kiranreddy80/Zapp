@@ -57,74 +57,94 @@ export const SITE = {
 }
 
 export const CONTACT = {
-  phone: '+91 98100 44 220',
-  phoneHref: 'tel:+919810044220',
-  supportEmail: 'help@sgdelectric.in',
-  salesEmail: 'partners@sgdelectric.in',
-  pressEmail: 'press@sgdelectric.in',
-  careersEmail: 'careers@sgdelectric.in',
+  phone: '+91 85000 85120',
+  phoneHref: 'tel:+918500085120',
+  /*
+   * Note the domain: the client's address is on sgdlogistics.in, not the
+   * sgdelectric.in this site assumes elsewhere (see Seo.jsx, which builds every
+   * canonical URL from it). Only one address was supplied, so support, sales,
+   * press and careers all point at it for now.
+   */
+  supportEmail: 'communication@sgdlogistics.in',
+  salesEmail: 'communication@sgdlogistics.in',
+  pressEmail: 'communication@sgdlogistics.in',
+  careersEmail: 'communication@sgdlogistics.in',
   hq: {
-    line1: 'SGD Electric Mobility Pvt. Ltd.',
-    line2: 'Tower B, Cyber Greens, DLF Phase 3',
-    city: 'Gurugram, Haryana 122002',
+    line1: 'Manjeera Trinity Corporate, KPHB Phase 3',
+    line2: 'Kukatpally Housing Board Colony, Kukatpally',
+    city: 'Hyderabad, Telangana 500072',
     country: 'India',
   },
   hours: [
-    { days: 'Monday – Saturday', time: '8:00 AM – 9:00 PM' },
-    { days: 'Sunday', time: '10:00 AM – 6:00 PM' },
+    { days: 'Office', time: '10:00 AM – 7:00 PM' },
+    { days: 'Customer support', time: '5:00 AM – 11:00 PM' },
+    // the client said one day off a week but did not say which — asked
+    { days: 'Weekly off', time: 'One day a week' },
   ],
 }
 
 /**
- * Hubs shown in the Get In Touch map. `query` is passed to Google Maps'
+ * Offices shown in the Get In Touch map. `query` is passed to Google Maps'
  * keyless embed endpoint, so no API key or billing account is needed.
+ *
+ * Only the head office has a street address — the client listed the other
+ * regions by state alone, so those pins land on the region rather than a
+ * building. Replace `address` and `query` as each branch address arrives.
  */
 export const CITY_HUBS = [
   {
-    city: 'Gurugram',
-    label: 'Delhi NCR',
-    address: 'Tower B, Cyber Greens, DLF Phase 3, Gurugram, Haryana 122002',
-    query: 'DLF Phase 3, Gurugram, Haryana',
+    city: 'Hyderabad',
+    label: 'Hyderabad',
+    address:
+      'Manjeera Trinity Corporate, Kukatpally Housing Board Colony, KPHB Phase 3, Kukatpally, Hyderabad, Telangana 500072',
+    query: 'Manjeera Trinity Corporate, KPHB Phase 3, Kukatpally, Hyderabad',
+  },
+  {
+    city: 'Andhra Pradesh',
+    label: 'Andhra Pradesh',
+    address: 'Andhra Pradesh — branch address to follow',
+    query: 'Andhra Pradesh, India',
+  },
+  {
+    city: 'Karnataka',
+    label: 'Karnataka',
+    address: 'Karnataka — branch address to follow',
+    query: 'Karnataka, India',
+  },
+  {
+    city: 'Tamil Nadu',
+    label: 'Tamil Nadu',
+    address: 'Tamil Nadu — branch address to follow',
+    query: 'Tamil Nadu, India',
+  },
+  {
+    city: 'Delhi',
+    label: 'Delhi',
+    address: 'Delhi — branch address to follow',
+    query: 'Delhi, India',
   },
   {
     city: 'Mumbai',
     label: 'Mumbai',
-    address: 'Unit 4, Andheri East Industrial Estate, Mumbai, Maharashtra 400069',
-    query: 'Andheri East, Mumbai, Maharashtra',
-  },
-  {
-    city: 'Bengaluru',
-    label: 'Bengaluru',
-    address: '2nd Floor, Koramangala 5th Block, Bengaluru, Karnataka 560095',
-    query: 'Koramangala, Bengaluru, Karnataka',
-  },
-  {
-    city: 'Hyderabad',
-    label: 'Hyderabad',
-    address: 'Plot 12, HITEC City, Madhapur, Hyderabad, Telangana 500081',
-    query: 'HITEC City, Hyderabad, Telangana',
-  },
-  {
-    city: 'Pune',
-    label: 'Pune',
-    address: 'Ground Floor, Baner Road, Pune, Maharashtra 411045',
-    query: 'Baner, Pune, Maharashtra',
+    address: 'Mumbai — branch address to follow',
+    query: 'Mumbai, Maharashtra, India',
   },
 ]
 
+/**
+ * Where the company operates, used by the contact form's city picker.
+ *
+ * The client gave regions rather than cities, so these are the states and metros
+ * they named. Anything quoting "12 cities" elsewhere on the site predates this
+ * and is still unverified.
+ */
 export const CITIES = [
-  'Delhi NCR',
-  'Gurugram',
-  'Noida',
-  'Bengaluru',
+  'Telangana',
+  'Andhra Pradesh',
+  'Karnataka',
+  'Tamil Nadu',
+  'Delhi',
   'Mumbai',
-  'Pune',
-  'Hyderabad',
-  'Chennai',
-  'Kolkata',
-  'Ahmedabad',
-  'Jaipur',
-  'Lucknow',
 ]
 
 export const SOCIALS = [

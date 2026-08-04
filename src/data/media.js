@@ -102,10 +102,11 @@ export const IMG = {
   portraitWoman2: photo(34381970, 800),
   portraitWoman3: photo(29852895, 800),
   portraitWoman4: photo(18809829, 800),
-  // Business portrait for the CEO letter. Deliberately outside the portraitMan
-  // set — every one of those is already a rider or fleet owner in TESTIMONIALS,
-  // and the same face cannot appear twice on the home page in two roles.
-  portraitExec: photo(37894130, 900),
+  // The real founder photograph. Two crops from one supplied full-length shot:
+  // 4:5 for the letter, and a square head-and-shoulders for small round avatars,
+  // because centre-cropping the 4:5 to a circle lands on the shirt.
+  portraitExec: '/media/founder.jpg',
+  portraitExecFace: '/media/founder-face.jpg',
 
   // ---- Workplace ---------------------------------------------------------
   teamMeeting: photo(7869111),
