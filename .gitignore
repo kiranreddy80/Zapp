@@ -17,3 +17,6 @@ dist-ssr
 # Original full-size art. The optimised .jpg versions in public/media are what
 # the site ships; keeping the multi-MB PNGs out of git avoids bloating clones.
 public/media/*.png
+
+# Unrelated project dropped into this folder — not part of the site
+Zenfoo-Website-main/
