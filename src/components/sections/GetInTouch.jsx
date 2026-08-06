@@ -5,7 +5,9 @@ import Reveal from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
 import Button from '@/components/ui/Button'
 import Field from '@/components/ui/Field'
-import { CITY_HUBS, CONTACT } from '@/data/site'
+import { CITY_HUBS } from '@/data/site'
+import { useContact } from '@/context/Content'
+import { sendEnquiry } from '@/lib/cms'
 import cn from '@/lib/cn'
 
 /**
@@ -19,13 +21,24 @@ import cn from '@/lib/cn'
 /** Where the form is in its lifecycle: idle → sending → sent. */
 function ContactForm() {
   const [status, setStatus] = useState('idle')
+  const [error, setError] = useState(null)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    // read the fields before awaiting — the event is not usable afterwards
+    const data = Object.fromEntries(new FormData(e.currentTarget))
     setStatus('sending')
-    // No backend yet — this is where the Node API call will go. Matches the
-    // placeholder on /contact; both need wiring at the same time.
-    setTimeout(() => setStatus('sent'), 900)
+    setError(null)
+
+    try {
+      await sendEnquiry(data)
+      setStatus('sent')
+    } catch (err) {
+      // back to idle rather than an error state: what they typed is still in
+      // the form, so the retry costs them nothing
+      setStatus('idle')
+      setError(err.message)
+    }
   }
 
   return (
@@ -68,6 +81,15 @@ function ContactForm() {
                 Four fields. We route it to the right team from there.
               </p>
             </div>
+
+            {error && (
+              <p
+                role="alert"
+                className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-[14px] leading-relaxed text-red-700 sm:col-span-2"
+              >
+                {error}
+              </p>
+            )}
 
             <Field label="Full name" id="name" required placeholder="Your name" autoComplete="name" />
             <Field
@@ -141,6 +163,8 @@ function ContactForm() {
  * proxy or a strict tracking blocker.
  */
 function HubMap() {
+  // the caption states the opening hours, which are editable in the panel
+  const CONTACT = useContact()
   const [index, setIndex] = useState(0)
   const hub = CITY_HUBS[index]
 
@@ -235,6 +259,7 @@ function HubMap() {
 }
 
 export default function GetInTouch() {
+  const CONTACT = useContact()
   return (
     <Section id="get-in-touch" tone="brand">
       {/* the copy runs across the top now — as a third column it squeezed both

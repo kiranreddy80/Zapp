@@ -5,7 +5,7 @@ import Section, { SectionHeading } from '@/components/ui/Section'
 import Img from '@/components/ui/Img'
 import Icon from '@/components/ui/Icon'
 import Lightbox from '@/components/gallery/Lightbox'
-import { GALLERY } from '@/data/content'
+import { useGallery } from '@/context/Content'
 import cn from '@/lib/cn'
 
 const EASE = [0.22, 1, 0.36, 1]
@@ -19,6 +19,7 @@ const EASE = [0.22, 1, 0.36, 1]
  * free, and degrades to a plain scrollable row if JavaScript never runs.
  */
 export default function Gallery() {
+  const GALLERY = useGallery()
   const railRef = useRef(null)
   const [open, setOpen] = useState(null)
   const [edge, setEdge] = useState({ start: true, end: false })

@@ -3,7 +3,8 @@ import { motion, useReducedMotion } from 'framer-motion'
 import Section from '@/components/ui/Section'
 import Icon from '@/components/ui/Icon'
 import Counter from '@/components/ui/Counter'
-import { REVIEWS, REVIEW_SUMMARY } from '@/data/content'
+import { REVIEW_SUMMARY } from '@/data/content'
+import { useReviews } from '@/context/Content'
 import cn from '@/lib/cn'
 
 const EASE = [0.22, 1, 0.36, 1]
@@ -67,13 +68,15 @@ function Card({ review }) {
 
 export default function ReviewWall() {
   const reduced = useReducedMotion()
+  // live from the admin panel, falling back to the built-in reviews
+  const REVIEWS = useReviews()
 
   // deal the reviews across the columns so each holds a different set
   const columns = useMemo(() => {
     const out = COLUMNS.map(() => [])
     REVIEWS.forEach((r, i) => out[i % COLUMNS.length].push(r))
     return out
-  }, [])
+  }, [REVIEWS])
 
   return (
     <Section id="reviews" tone="deep" className="relative isolate overflow-hidden">

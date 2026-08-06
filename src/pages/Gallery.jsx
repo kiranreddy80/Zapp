@@ -5,7 +5,8 @@ import Section from '@/components/ui/Section'
 import Img from '@/components/ui/Img'
 import Icon from '@/components/ui/Icon'
 import Lightbox from '@/components/gallery/Lightbox'
-import { GALLERY, GALLERY_TAGS } from '@/data/content'
+import { GALLERY_TAGS } from '@/data/content'
+import { useGallery } from '@/context/Content'
 import cn from '@/lib/cn'
 
 const EASE = [0.22, 1, 0.36, 1]
@@ -19,6 +20,7 @@ const ALL = 'All'
  * reserved before the image lands and the column never jumps.
  */
 export default function GalleryPage() {
+  const GALLERY = useGallery()
   const [tag, setTag] = useState(ALL)
   const [open, setOpen] = useState(null)
   const reduced = useReducedMotion()
@@ -26,7 +28,7 @@ export default function GalleryPage() {
   const tags = useMemo(() => [ALL, ...GALLERY_TAGS], [])
   const shown = useMemo(
     () => (tag === ALL ? GALLERY : GALLERY.filter((g) => g.tag === tag)),
-    [tag],
+    [tag, GALLERY],
   )
 
   const pick = (next) => {
@@ -39,7 +41,7 @@ export default function GalleryPage() {
       <Seo
         title="Gallery"
         description="Life at SGD Electric — launches, festivals, the inter-hub league and the floor where every handover happens."
-        image={GALLERY[0].src}
+        image={GALLERY[0]?.src}
         path="/gallery"
       />
 

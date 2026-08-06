@@ -22,11 +22,11 @@ import {
   ABOUT_FAQS,
   VALUES,
   TIMELINE,
-  LEADERSHIP,
   INVESTORS,
   NEWS,
 } from '@/data/content'
 import { CONTACT } from '@/data/site'
+import { useTeam } from '@/context/Content'
 import { IMG, VIDEO } from '@/data/media'
 import { formatDate } from '@/lib/format'
 import cn from '@/lib/cn'
@@ -184,6 +184,7 @@ function GetInTouch() {
 /* ------------------------------------------------------------------ */
 
 export default function About() {
+  const LEADERSHIP = useTeam()
   return (
     <>
       <Seo

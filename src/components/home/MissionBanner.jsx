@@ -7,7 +7,7 @@ import {
   useSpring,
   useTransform,
 } from 'framer-motion'
-import { BANNER_SLIDES } from '@/data/media'
+import { useBanners } from '@/context/Content'
 import { useHeroTheme } from '@/context/HeroTheme'
 import Img from '@/components/ui/Img'
 import Button from '@/components/ui/Button'
@@ -38,13 +38,22 @@ export default function MissionBanner() {
   const [index, setIndex] = useState(0)
   const ref = useRef(null)
 
+  // live from the admin panel, falling back to the built-in slides
+  const BANNER_SLIDES = useBanners()
+  const count = BANNER_SLIDES.length
+
   useHeroTheme('dark')
 
   useEffect(() => {
-    if (reduced) return
-    const t = setInterval(() => setIndex((i) => (i + 1) % BANNER_SLIDES.length), SLIDE_MS)
+    if (reduced || count < 2) return
+    const t = setInterval(() => setIndex((i) => (i + 1) % count), SLIDE_MS)
     return () => clearInterval(t)
-  }, [reduced])
+  }, [reduced, count])
+
+  // an editor deleting slides can leave the index past the end of a shorter list
+  useEffect(() => {
+    if (index >= count) setIndex(0)
+  }, [index, count])
 
   /*
    * Scroll-linked fold.
@@ -68,7 +77,9 @@ export default function MissionBanner() {
   const opacity = useTransform(p, [0, 0.75, 1], [1, 0.8, 0.3])
   const radius = useTransform(p, [0, 1], [0, 40])
 
-  const slide = BANNER_SLIDES[index]
+  // deleting every banner is a legitimate state — the section keeps its dark
+  // backdrop and headline rather than throwing on an undefined slide
+  const slide = BANNER_SLIDES[index] ?? null
 
   const foldStyle = reduced
     ? undefined
@@ -92,6 +103,7 @@ export default function MissionBanner() {
       {/* ---- slideshow ---- */}
       <div className="absolute inset-0 -z-20">
         <AnimatePresence initial={false}>
+          {slide && (
           <motion.div
             key={slide.src}
             initial={{ opacity: 0, scale: reduced ? 1 : 1.08 }}
@@ -115,6 +127,7 @@ export default function MissionBanner() {
               priority={index === 0}
             />
           </motion.div>
+          )}
         </AnimatePresence>
       </div>
 
